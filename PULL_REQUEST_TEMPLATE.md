@@ -18,7 +18,7 @@ Please also list any relevant details for your test configuration_
 
 ## Checklist:
 
-- [ ] My code follows the style guidelines of this project
+- [ ] My code follows [OCF's coding style guidelines](https://github.com/openclimatefix/nowcasting/blob/main/coding_style.md)
 - [ ] I have performed a self-review of my own code
 - [ ] I have made corresponding changes to the documentation
 - [ ] I have added tests that prove my fix is effective or that my feature works
