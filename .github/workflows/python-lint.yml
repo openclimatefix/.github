@@ -1,5 +1,12 @@
 name: Lint Python
-on: [workflow_call]
+on: 
+  workflow_call:
+    inputs:
+      folder:
+        description: 'Folder to run checks in '
+        default: '.'
+        required: false
+        type: string
 jobs:
   run-python-linters:
     runs-on: ubuntu-latest
@@ -18,7 +25,7 @@ jobs:
           pip install pydocstyle flake8 isort black
       - name: Docstyle linting
         run: |
-          pydocstyle --convention=google --add-ignore=D200,D202,D210,D212,D415 .
+          pydocstyle --convention=google --add-ignore=D200,D202,D210,D212,D415 ${{ inputs.folder }}
       - name: flake8 linting
         run: |
           flake8 --max-line-length 100 --extend-ignore=E203 .
