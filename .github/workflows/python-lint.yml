@@ -28,10 +28,10 @@ jobs:
           pydocstyle --convention=google --add-ignore=D200,D202,D210,D212,D415 ${{ inputs.folder }}
       - name: flake8 linting
         run: |
-          flake8 --max-line-length 100 --extend-ignore=E203 .
+          flake8 --max-line-length 100 --extend-ignore=E203 ${{ inputs.folder }}
       - name: Run isort
         run: |
-          isort --check --diff --profile black --line-length 100 .
+          isort --check --diff --profile black --line-length 100 ${{ inputs.folder }}
       - name: Run black
         run: |
           black --line-length 100 .
