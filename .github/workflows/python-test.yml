@@ -4,7 +4,7 @@ jobs:
   run-python-tests:
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: [3.9]
         os: ["ubuntu-latest", "macos-latest"]
     runs-on: ${{ matrix.os }}
 
