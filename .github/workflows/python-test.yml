@@ -34,7 +34,7 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: pytest -s -n 2 --dist=loadfile
-        if: ${{ github.event.action == 'unassigned' }
+        if: ${{ inputs.project_dir == 'unassigned' }
       - name: Test with pytest-cov
         run: pytest --cov=${{ inputs.project_dir }} -n 2 --dist=loadfile
         if: ${{ inputs.project_dir != 'unassigned' }}
