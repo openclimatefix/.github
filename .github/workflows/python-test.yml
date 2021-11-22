@@ -1,5 +1,9 @@
 name: Python Tests
-on: [workflow_call]
+on:
+  workflow_call:
+    inputs:
+      PYTEST-NUMCPUS: '2'
+
 jobs:
   run-python-tests:
     strategy:
@@ -28,5 +32,6 @@ jobs:
       - name: Test with pytest
         run: |
           # lets get the string for how many cpus to use with pytest
-          if [ $PYTEST-NUMCPUS ]; then export PYTESTX="n -2 --dist=loadfile "; else export PYTESTX="-n $PYTEST-NUMCPUS" --dist=loadfile; fi
-          pytest -s $PYTEST 
+          export PYTESTXDIST="-n $PYTEST-NUMCPUS" --dist=loadfile
+          # run pytest
+          pytest -s $PYTESTXDIST
