@@ -38,6 +38,7 @@ jobs:
           echo "Will be using $pytest_numcpus cpus for pytest testing"
           export PYTESTXDIST="-n $pytest_numcpus"
           if [ $pytest-numcpus > 0]; then export PYTESTXDIST=$PYTESTXDIST --dist=loadfile; fi
+          echo PYTESTXDIST
 
           # run the tests
           pytest -s $PYTESTXDIST
