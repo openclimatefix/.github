@@ -2,7 +2,7 @@ name: Python Tests
 on:
   workflow_call:
     inputs:
-      pytest-numcpus:
+      pytest_numcpus:
         required: false
         type: number
         default: 2
@@ -35,7 +35,7 @@ jobs:
       - name: Test with pytest
         run: |
           # lets get the string for how many cpus to use with pytest
-          export PYTESTXDIST="-n $pytest-numcpus"
+          export PYTESTXDIST="-n $pytest_numcpus"
           if [ $pytest-numcpus > 0]; then export PYTESTXDIST=$PYTESTXDIST --dist=loadfile; fi
 
           # run the tests
