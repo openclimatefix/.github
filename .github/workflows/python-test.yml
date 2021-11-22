@@ -32,13 +32,12 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install git+https://github.com/SheffieldSolar/PV_Live-API
           pip install -e .
-      - name: Test with pytest
+      - name: Setup with pytest
         run: |
           # lets get the string for how many cpus to use with pytest
           echo "Will be using ${{ inputs.pytest_numcpus }} cpus for pytest testing"
           export PYTESTXDIST="-n ${{ inputs.pytest_numcpus }}"
           if [ ${{ inputs.pytest_numcpus }} -gt 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
-          echo "pytest-xdist options that will be used are '$PYTESTXDIST'"
-
-          # run the tests
-          pytest -s $PYTESTXDIST
+          echo "pytest-xdist options that will be used are: $PYTESTXDIST
+      - name: Run pytest
+        run: pytest $PYTESTXDIST -s
