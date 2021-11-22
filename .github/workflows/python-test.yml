@@ -35,7 +35,7 @@ jobs:
       - name: Test with pytest
         run: |
           # lets get the string for how many cpus to use with pytest
-          echo "Will be using $pytest_numcpus cpus for pytest testing"
+          echo "Will be using ${{ inputs.pytest_numcpus }} cpus for pytest testing"
           export PYTESTXDIST="-n  ${{ inputs.pytest_numcpus }}"
           if [ ${{ inputs.pytest_numcpus }} > 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
           echo $PYTESTXDIST
