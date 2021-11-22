@@ -38,5 +38,5 @@ jobs:
           export PYTESTXDIST="-n $pytest-numcpus"
           if [ $pytest-numcpus > 0]; then export PYTESTXDIST=$PYTESTXDIST --dist=loadfile; fi
 
-          # run the testsytest
+          # run the tests
           pytest -s $PYTESTXDIST
