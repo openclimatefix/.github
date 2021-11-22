@@ -4,8 +4,8 @@ on:
     inputs:
       pytest_numcpus:
         required: false
-        type: number
-        default: 2
+        type: string
+        default: '2'
 
 jobs:
   run-python-tests:
@@ -38,7 +38,7 @@ jobs:
           echo "Will be using $pytest_numcpus cpus for pytest testing"
           export PYTESTXDIST="-n $pytest_numcpus"
           if [ $pytest_numcpus > 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
-          echo PYTESTXDIST
+          echo $PYTESTXDIST
 
           # run the tests
           pytest -s $PYTESTXDIST
