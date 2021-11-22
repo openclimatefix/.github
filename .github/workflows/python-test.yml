@@ -2,7 +2,10 @@ name: Python Tests
 on:
   workflow_call:
     inputs:
-      PYTEST-NUMCPUS: '2'
+      PYTEST-NUMCPUS:
+        required: false
+        type: string
+        default: '2'
 
 jobs:
   run-python-tests:
