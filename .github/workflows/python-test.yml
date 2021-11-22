@@ -29,4 +29,4 @@ jobs:
         run: |
           # lets get the string for how many cpus to use with pytest
           if [ $PYTEST-NUMCPUS ]; then export PYTESTX="n -2 --dist=loadfile "; else export PYTESTX="-n $PYTEST-NUMCPUS" --dist=loadfile; fi
-          pytest -s $PYTESTX --dist=loadfile
+          pytest -s $PYTEST 
