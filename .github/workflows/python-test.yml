@@ -4,8 +4,8 @@ on:
     inputs:
       pytest-numcpus:
         required: false
-        type: string
-        default: '2'
+        type: number
+        default: 2
 
 jobs:
   run-python-tests:
@@ -35,6 +35,8 @@ jobs:
       - name: Test with pytest
         run: |
           # lets get the string for how many cpus to use with pytest
-          export PYTESTXDIST="-n $PYTEST-NUMCPUS" --dist=loadfile
-          # run pytest
+          export PYTESTXDIST="-n $pytest-numcpus"
+          if [ $pytest-numcpus > 0]; then export PYTESTXDIST=$PYTESTXDIST --dist=loadfile
+
+          # run the testsytest
           pytest -s $PYTESTXDIST
