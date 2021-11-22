@@ -38,7 +38,7 @@ jobs:
           echo "Will be using ${{ inputs.pytest_numcpus }} cpus for pytest testing"
           export PYTESTXDIST="-n ${{ inputs.pytest_numcpus }}"
           if [ ${{ inputs.pytest_numcpus }} -gt 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
-          echo "$PYTESTXDIST"
+          echo "pytest-xdist options that will be used are '$PYTESTXDIST'"
 
           # run the tests
           pytest -s $PYTESTXDIST
