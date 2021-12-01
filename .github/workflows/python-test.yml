@@ -2,10 +2,15 @@ name: Python Tests
 on:
   workflow_call:
     inputs:
-      project_dir:
+      pytest_cov_dir:
         required: false
         type: string
         default: 'unassigned'
+      pytest_numcpus:
+        required: false
+        type: string
+        default: '2'
+
 
 jobs:
   run-python-tests:
@@ -32,10 +37,22 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install git+https://github.com/SheffieldSolar/PV_Live-API
           pip install -e .
-      - name: Test with pytest
-        run: pytest -s -n 2 --dist=loadfile
-        if: ${{ inputs.project_dir == 'unassigned' }
-      - name: Test with pytest-cov
-        run: pytest --cov=${{ inputs.project_dir }} -n 2 --dist=loadfile
-        if: ${{ inputs.project_dir != 'unassigned' }}
+      - name: Setup with pytest-xdist
+        run: |
+          # lets get the string for how many cpus to use with pytest
+          echo "Will be using ${{ inputs.pytest_numcpus }} cpus for pytest testing"
+          export PYTESTXDIST="-n ${{ inputs.pytest_numcpus }}"
+          if [ ${{ inputs.pytest_numcpus }} -gt 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
+          echo "pytest-xdist options that will be used are: $PYTESTXDIST"
+      - name: Setup with pytest-cov
+        run: |
+          # let make pytest run with coverage
+          echo "Will be looking at coverage of dir  ${{ inputs.pytest_cov_dir }}"
+          pip install pytest-cov
+          export PYTESTCOV="cov=${{ inputs.pytest_cov_dir }}"
+          if [ ${{ inputs.pytest_cov_dir }} == "unassigned" ]; then export PYTESTCOV=""; fi
+          echo "pytest-cov options that will be used are: $PYTESTCOV"
+
+      - name: Run pytest
+        run: pytest $PYTESTXDIST $PYTESTCOV  -s
 

@@ -1,5 +1,5 @@
 name: Bump version and auto-release
-on: 
+on:
   workflow_call:
     secrets:
       token:
@@ -59,4 +59,3 @@ jobs:
             ${{ steps.Changelog.outputs.changelog }}
           draft: false
           prerelease: false
-          
