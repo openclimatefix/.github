@@ -1,5 +1,5 @@
 name: Lint Python
-on: 
+on:
   workflow_call:
     inputs:
       folder:
