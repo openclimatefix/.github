@@ -41,17 +41,26 @@ jobs:
         run: |
           # lets get the string for how many cpus to use with pytest
           echo "Will be using ${{ inputs.pytest_numcpus }} cpus for pytest testing"
+          #
+          # make PYTESTXDIST
           export PYTESTXDIST="-n ${{ inputs.pytest_numcpus }}"
           if [ ${{ inputs.pytest_numcpus }} -gt 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
+          #
+          # echo results
           echo "pytest-xdist options that will be used are: $PYTESTXDIST"
       - name: Setup with pytest-cov
         run: |
           # let make pytest run with coverage
           echo "Will be looking at coverage of dir  ${{ inputs.pytest_cov_dir }}"
+          #
+          # install pytest-cov
           pip install pytest-cov
-          export PYTESTCOV="cov=${{ inputs.pytest_cov_dir }}"
+          #
+          # make PYTESTCOV
+          export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }}"
           if [ ${{ inputs.pytest_cov_dir }} == "unassigned" ]; then export PYTESTCOV=""; fi
+          #
+          # echo results
           echo "pytest-cov options that will be used are: $PYTESTCOV"
-
       - name: Run pytest
         run: pytest $PYTESTXDIST $PYTESTCOV  -s
