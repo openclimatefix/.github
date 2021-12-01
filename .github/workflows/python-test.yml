@@ -55,4 +55,3 @@ jobs:
 
       - name: Run pytest
         run: pytest $PYTESTXDIST $PYTESTCOV  -s
-
