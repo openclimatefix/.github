@@ -37,7 +37,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install git+https://github.com/SheffieldSolar/PV_Live-API
           if [ -f "setup.py" ]; then pip install -e .; else export PYTHONPATH=$PYTHONPATH:./src; fi
-          echo "$PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
+          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
       - name: Setup with pytest-xdist
         run: |
           # lets get the string for how many cpus to use with pytest
