@@ -10,6 +10,10 @@ on:
         required: false
         type: string
         default: '2'
+      code_cov_secret:
+        required: false
+        type: string
+        default: 'unassigned'
 
 
 jobs:
@@ -72,3 +76,8 @@ jobs:
           eval $PYTEST_COMMAND
       - name: Show coverage
         run: coverage report -m
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          token: ${{ inputs.code_cov_secret }} # not required for public repos
