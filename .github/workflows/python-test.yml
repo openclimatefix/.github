@@ -36,7 +36,7 @@ jobs:
           pip install pytest-xdist
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install git+https://github.com/SheffieldSolar/PV_Live-API
-          if [ -f "setup.py" ]; then pip install -e .; fi
+          if [ -f "setup.py" ]; then pip install -e .; else cd src; fi
       - name: Setup with pytest-xdist
         run: |
           # lets get the string for how many cpus to use with pytest
