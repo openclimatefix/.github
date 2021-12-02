@@ -10,10 +10,9 @@ on:
         required: false
         type: string
         default: '2'
+    secrets:
       code_cov_secret:
         required: false
-        type: string
-        default: 'unassigned'
 
 
 jobs:
@@ -80,4 +79,4 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
-          token: ${{ inputs.code_cov_secret }} # not required for public repos
+          token: ${{ secrets.code_cov_secret }} # not required for public repos
