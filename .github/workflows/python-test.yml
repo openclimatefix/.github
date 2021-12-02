@@ -62,6 +62,7 @@ jobs:
           #
           # echo results
           echo "pytest-cov options that will be used are: $PYTESTCOV"
+          echo "PYTESTCOV=$PYTESTCOV" >> $GITHUB_ENV
       - name: Run pytest
         run: |
           export PYTEST_COMMAND="pytest $PYTESTCOV -s"
