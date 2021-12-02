@@ -62,7 +62,7 @@ jobs:
           pip install pytest-cov
           #
           # make PYTESTCOV
-          export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }}"
+          export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }} --cov-report=xml"
           if [ ${{ inputs.pytest_cov_dir }} == "unassigned" ]; then export PYTESTCOV=""; fi
           #
           # echo results and save env var for other jobs
@@ -73,8 +73,6 @@ jobs:
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
           eval $PYTEST_COMMAND
-      - name: Show coverage
-        run: coverage report -m
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
         with:
