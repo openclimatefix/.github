@@ -64,3 +64,5 @@ jobs:
           echo "pytest-cov options that will be used are: $PYTESTCOV"
       - name: Run pytest
         run: pytest $PYTESTCOV  -s
+      - name: Show coverage
+        run: coverage report -m
