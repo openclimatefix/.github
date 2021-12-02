@@ -63,6 +63,6 @@ jobs:
           # echo results
           echo "pytest-cov options that will be used are: $PYTESTCOV"
       - name: Run pytest
-        run: pytest --cov=nowcasting_dataloader  -s
+        run: pytest $PYTESTCOV -s
       - name: Show coverage
         run: coverage report -m
