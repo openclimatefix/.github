@@ -10,9 +10,6 @@ on:
         required: false
         type: string
         default: '2'
-    secrets:
-      code_cov_secret:
-        required: false
 
 
 jobs:
