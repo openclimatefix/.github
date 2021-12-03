@@ -36,7 +36,8 @@ jobs:
           pip install pytest-xdist
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install git+https://github.com/SheffieldSolar/PV_Live-API
-          pip install -e .
+          if [ -f "setup.py" ]; then pip install -e .; else export PYTHONPATH=$PYTHONPATH:./src; fi
+          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
       - name: Setup with pytest-xdist
         run: |
           # lets get the string for how many cpus to use with pytest
@@ -58,7 +59,7 @@ jobs:
           pip install pytest-cov
           #
           # make PYTESTCOV
-          export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }}"
+          export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }} --cov-report=xml"
           if [ ${{ inputs.pytest_cov_dir }} == "unassigned" ]; then export PYTESTCOV=""; fi
           #
           # echo results and save env var for other jobs
@@ -69,5 +70,7 @@ jobs:
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
           eval $PYTEST_COMMAND
-      - name: Show coverage
-        run: coverage report -m
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
