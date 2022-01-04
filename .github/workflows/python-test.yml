@@ -15,6 +15,11 @@ on:
         required: false
         type: string
         default: ''
+      brew_install:
+        # for mac machine, these are extra packages that are installed
+        required: false
+        type: string
+        default: 'c-blosc hdf5'
 
 
 
@@ -34,7 +39,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Do some macOS specific installs for Python 3.9
         run: |
-          brew install c-blosc hdf5
+          brew install ${{inputs.brew_install}}
         if: matrix.os == 'macos-latest'
       - name: Do some Ubunutu specific installs for Python 3.9
         if: runner.os == 'Linux'
