@@ -29,6 +29,7 @@ jobs:
       - name: Do some macOS specific installs for Python 3.9
         run: |
           brew install c-blosc hdf5
+          brew install geos
         if: matrix.os == 'macos-latest'
       - name: Install dependencies
         run: |
