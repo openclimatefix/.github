@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages with brew
         run: |
-          brew install geos
+          brew install geos proj
       - name: Do some macOS specific installs for Python 3.9
         run: |
           brew install c-blosc hdf5
