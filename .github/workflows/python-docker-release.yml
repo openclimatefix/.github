@@ -13,8 +13,9 @@ on:
         required: true
         type: string
       docker_file:
-        required: true
+        required: false
         type: string
+        default: Dockerfile
 
 jobs:
   build:
@@ -86,7 +87,7 @@ jobs:
           # list of Docker images to use as base name for tags
           # TODO make more flexible
           images: |
-            openclimatefix/metoffice_weather_datahub
+            openclimatefix/${{ inputs.image_base_name }}
           tags: |
             type=raw,value=${{ needs.build.outputs.new_tag }}
           flavor: |
@@ -108,7 +109,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: infrastructure/docker/Dockerfile # TODO make more flexible
+          file: ${{ inputs.docker_file }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
