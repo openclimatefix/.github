@@ -74,7 +74,7 @@ jobs:
       - name: Get the version
         id: get_version
         # Needed to strip the /refs/tag prefix
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=VERSION::${{ needs.build.outputs.new_tag }}
       - run: echo ${{ steps.get_version.outputs.VERSION }}
       - name: Docker meta
         id: meta
