@@ -8,6 +8,13 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
+    inputs:
+      image_base_name:
+        required: true
+        type: string
+      docker_file:
+        required: true
+        type: string
 
 jobs:
   build:
