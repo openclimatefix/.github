@@ -75,6 +75,7 @@ jobs:
         id: get_version
         # Needed to strip the /refs/tag prefix
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - run: echo ${{ steps.get_version.outputs.VERSION }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
@@ -84,7 +85,7 @@ jobs:
             openclimatefix/nowcasting_api
             ghcr.io/openclimatefix/nowcasting_api
           tags: |
-            type=raw,value=${{needs.build.outputs.new_tag}}
+            type=raw,value=${{ steps.get_version.outputs.VERSION }}
           flavor: |
             latest=true
       - name: Set up Docker Buildx
