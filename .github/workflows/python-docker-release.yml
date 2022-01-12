@@ -66,16 +66,12 @@ jobs:
           prerelease: false
 
   docker-release:
-    needs: [python-release]
+    needs: [build, python-release]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Get the version
-        id: get_version
-        # Needed to strip the /refs/tag prefix
-        run: echo ::set-output name=VERSION::${{ needs.build.outputs.new_tag }}
-      - run: echo ${{ steps.get_version.outputs.VERSION }}
+      - run: echo ${{ needs.build.outputs.new_tag }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
@@ -85,7 +81,7 @@ jobs:
             openclimatefix/nowcasting_api
             ghcr.io/openclimatefix/nowcasting_api
           tags: |
-            type=raw,value=${{ steps.get_version.outputs.VERSION }}
+            type=raw,value=${{ needs.build.outputs.new_tag }}
           flavor: |
             latest=true
       - name: Set up Docker Buildx
