@@ -13,7 +13,10 @@ Fixes #
 _Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce.
 Please also list any relevant details for your test configuration_
 
-- [ ] No
+- [ ] Yes
+
+_If your changes affect data processing, have you plotted any changes? i.e. have you done a quick sanity check?_
+
 - [ ] Yes
 
 ## Checklist:
