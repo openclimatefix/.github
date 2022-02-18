@@ -34,7 +34,7 @@ jobs:
           tags: true
 
   docker-release:
-    needs: [build, python-release]
+    needs: [bump-version]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
