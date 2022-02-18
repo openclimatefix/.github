@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
-      - run: echo ${{ needs.build.outputs.new_tag }}
+      - run: echo ${{ needs.bump-version.outputs.new_tag }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
@@ -51,7 +51,7 @@ jobs:
           images: |
             openclimatefix/${{ inputs.image_base_name }}
           tags: |
-            type=raw,value=${{ needs.build.outputs.new_tag }}
+            type=raw,value=${{ needs.bump-version.outputs.new_tag }}
           flavor: |
             latest=true
       - name: Set up Docker Buildx
