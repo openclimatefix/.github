@@ -13,11 +13,11 @@ There are a number of ways for you to get involved:
 
 * Sign up to our [newsletter](https://openclimatefix.us20.list-manage.com/subscribe?u=ceb017fe32f0a4620227fda8a&id=d56fc32a31) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work  
 * Spread the word with your networks
-* Use our code (!) by following the guidelines below.
+* Use our code(!) by following the guidelines below.
 
 ## What if you use our code?
 
-In order for us to understand the use of our models, and to demonstrate impact to future funders, it is invaluable for us to know who is using the code and if possible, how. We licence the code in this repository under a permissive MIT licence, and we request that if you are using the code or deriving from it, that you attribute the use of Open Climate Fix’s work in your product by adding the text below:
+In order for us to understand the use of our models, and to demonstrate impact to future funders, it is invaluable for us to know who is using the code and if possible, how. We licence the code in this repository under a permissive MIT licence and if you are using the code or deriving from it, we request that you attribute the use of Open Climate Fix’s work in your product by adding the text below:
 
 #### 'original code by [Open Climate Fix](https://github.com/openclimatefix)'
 
