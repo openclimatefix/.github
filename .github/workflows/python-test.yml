@@ -22,7 +22,7 @@ on:
         default: 'c-blosc hdf5'
       os_list:
         # which systems to run the tests on
-        default: '{"ubuntu-latest", "macos-latest"}'
+        default: '["ubuntu-latest", "macos-latest"]'
         type: string
         required: false
 
