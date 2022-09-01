@@ -25,7 +25,7 @@ jobs:
           pip install pydocstyle flake8 isort black
       - name: Docstyle linting
         run: |
-          pydocstyle --convention=google --add-ignore=D200,D202,D210,D212,D415 ${{ inputs.folder }}
+          pydocstyle --convention=google --add-ignore=D200,D202,D210,D212,D415,D105 ${{ inputs.folder }}
       - name: flake8 linting
         run: |
           flake8 --max-line-length 100 --extend-ignore=E203 --per-file-ignores="__init__.py:F401" ${{ inputs.folder }}
