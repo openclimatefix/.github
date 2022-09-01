@@ -20,7 +20,11 @@ on:
         required: false
         type: string
         default: 'c-blosc hdf5'
-
+      os_list:
+        # which systems to run the tests on
+        default: '{"ubuntu-latest", "macos-latest"}'
+        type: string
+        required: false
 
 
 jobs:
@@ -28,7 +32,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9"]
-        os: ["ubuntu-latest"]
+        os: ${{ fromJSON(inputs.os_list) }}
     runs-on: ${{ matrix.os }}
 
     steps:
