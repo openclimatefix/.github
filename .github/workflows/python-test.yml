@@ -31,7 +31,7 @@ jobs:
   run-python-tests:
     strategy:
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.9", "3.10"]
         os: "${{ fromJSON(inputs.os_list) }}"
     runs-on: ${{ matrix.os }}
 
