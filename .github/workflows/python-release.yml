@@ -11,10 +11,10 @@ jobs:
     outputs:
       new_tag: ${{ steps.bumper.outputs.new_ver }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
             fetch-depth: 0
-            token: ${{ secrets.CI_GITHUB_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
       - name: Bump version
         id: bumper
         uses: jasonamyers/github-bumpversion-action@v1.0.3
