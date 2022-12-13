@@ -4,6 +4,7 @@ on:
     secrets:
       token:
         required: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,6 +12,9 @@ jobs:
       new_tag: ${{ steps.bumper.outputs.new_ver }}
     steps:
       - uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+            token: ${{ secrets.CI_GITHUB_TOKEN }}
       - name: Bump version
         id: bumper
         uses: jasonamyers/github-bumpversion-action@v1.0.3
