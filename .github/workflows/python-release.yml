@@ -70,6 +70,7 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.token }}
+          packages_dir: ${{ inputs.workdir }}/dist
 
   release:
     needs: [publish]
