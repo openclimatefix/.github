@@ -75,9 +75,6 @@ jobs:
   release:
     needs: [publish]
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ inputs.workdir }}
 
     steps:
       - run: echo ${{needs.build.outputs.new_tag}}
