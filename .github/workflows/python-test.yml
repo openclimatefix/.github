@@ -30,13 +30,18 @@ on:
         default: '.'
         required: false
         type: string
+      python-version:
+        description: 'The python versions to use'
+        default: "['3.9', '3.10']"
+        required: false
+        type: string
 
 
 jobs:
   run-python-tests:
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"]
+        python-version: ${{ fromJson(inputs.python-version) }}
         os: "${{ fromJSON(inputs.os_list) }}"
     runs-on: ${{ matrix.os }}
     defaults:
