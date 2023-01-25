@@ -35,11 +35,6 @@ on:
         default: "['3.9', '3.10']"
         required: false
         type: string
-      python_path:
-        # add dir to the python path, e.g. './src'
-        default: ''
-        type: string
-        required: false
 
 
 jobs:
