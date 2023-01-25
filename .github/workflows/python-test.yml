@@ -25,18 +25,31 @@ on:
         default: '["ubuntu-latest", "macos-latest"]'
         type: string
         required: false
+      workdir:
+        description: 'The directory of the root of the python project'
+        default: '.'
+        required: false
+        type: string
+      python-version:
+        description: 'The python versions to use'
+        default: "['3.9', '3.10']"
+        required: false
+        type: string
 
 
 jobs:
   run-python-tests:
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"]
+        python-version: ${{ fromJson(inputs.python-version) }}
         os: "${{ fromJSON(inputs.os_list) }}"
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
