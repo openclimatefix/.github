@@ -101,7 +101,6 @@ jobs:
           echo "PYTESTCOV=$PYTESTCOV" >> $GITHUB_ENV
       - name: Run pytest
         run: |
-          export PYTHONPATH=${PYTHONPATH}:${{ inputs.python_path }}
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
           eval $PYTEST_COMMAND
