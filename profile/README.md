@@ -8,7 +8,7 @@ There are a number of ways for you to get involved:
 * Submit pull requests. Right now we are laser-focused on [our solar electricity forecasting project](https://github.com/openclimatefix/nowcasting):
 
    * [List of "good first issues"](https://github.com/search?l=&p=1&q=user%3Aopenclimatefix+label%3A%22good+first+issue%22&ref=advsearch&type=Issues&utf8=%E2%9C%93&state=open): GitHub "issues" which describe changes we'd like to make to the code
-   * [OCF's coding style](https://github.com/openclimatefix/nowcasting/blob/main/coding_style.md)
+   * [OCF's coding style](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
    * The main tools we use include: PyTorch, PyTorch Lighting, xarray, pandas, pvlib
 
 * Sign up to our [newsletter](https://openclimatefix.us20.list-manage.com/subscribe?u=ceb017fe32f0a4620227fda8a&id=d56fc32a31) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work
