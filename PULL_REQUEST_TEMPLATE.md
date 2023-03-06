@@ -21,7 +21,7 @@ _If your changes affect data processing, have you plotted any changes? i.e. have
 
 ## Checklist:
 
-- [ ] My code follows [OCF's coding style guidelines](https://github.com/openclimatefix/nowcasting/blob/main/coding_style.md)
+- [ ] My code follows [OCF's coding style guidelines](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
 - [ ] I have performed a self-review of my own code
 - [ ] I have made corresponding changes to the documentation
 - [ ] I have added tests that prove my fix is effective or that my feature works
