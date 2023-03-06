@@ -14,7 +14,7 @@ Can be found in `.profile/README.md` and is rendered by GitHub on the [OCF organ
 
 To reduce duplication, we offer a set of reusable workflows that are used across most of our repositories. The following workflows can be found in `.github/workflows/`:
 
-- `python-lint`: Runs `isort`, `flake8`, `black` and `pydocstyle`
+- `python-lint`: Runs `ruff`, and `black`
 - `python-test`: Runs `pytest` and `pydoctest`
 - `python-release`: Runs a release script
 
