@@ -2,6 +2,8 @@
 We use [Black](https://black.readthedocs.io/en/stable/) to format our Python code.  We use these changes to Black's default settings:
 - `max-line-length = 100` (_why_ do we allow up to 100 characters per line, unlike a lot of Python code that limits lines to 80 characters?  For the same reason that [Linus Torvalds recently changed the Linux kernel coding guidelines to allow up to 100 characters per line](https://linux.slashdot.org/story/20/05/31/211211/linus-torvalds-argues-against-80-column-line-length-coding-style-as-linux-kernel-deprecates-it) :) )
 
+We use [Ruff](https://beta.ruff.rs/docs/) for all other code linting, such as docstrings, import sorting, and flake8. The `.ruff.toml` in our repository template has the configuration that we use across all our repositories. This also allows easy local usage, as the only command that needs to run is `ruff check` or `ruff --fix` for code to be linted and some of the issues auto-fixed. 
+
 ### Docstrings
 We use [Google-style docstrings](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings).
 
@@ -16,9 +18,3 @@ We use American English in our code (for example, so we use 'center' rather than
 
 ## Repository Template
 If making a new OCF Repository, please try using our [template here](https://github.com/openclimatefix/ocf_template) which should help with boilerplate linting and setup. 
-
-## TODO
-- publish black config file
-- find a good way to automatically check that docstrings comply with Google style
-- Change to using `ruff` for most linting
-- Repo template
