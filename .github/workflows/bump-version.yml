@@ -1,8 +1,15 @@
 name: Bump version
 
+on:
+  workflow_call:
+    outputs:
+      new_ver:
+        description: New version number
+        value: ${{ jobs.bump_version.outputs.new_tag }}
+
 
 jobs:
-  build:
+  bump_version:
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.bumper.outputs.new_ver }}

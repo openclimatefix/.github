@@ -23,17 +23,9 @@ jobs:
     outputs:
       new_tag: ${{ steps.bumper.outputs.new_ver }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
+      - name: Bump version
+        uses: ./.github/workflows/bump-version.yml@main
         id: bumper
-        uses: jasonamyers/github-bumpversion-action@v1.0.3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          tags: true
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
