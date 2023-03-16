@@ -1,0 +1,39 @@
+name: Make a github release
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        # This default value is consistent with the actions/checkout default value.
+        # Note however that if this is called after, say, the bump-version workflow, then
+        # this won't point to the right commit: use `main` instead in that case.
+        default: ${{ github.sha }}
+        type: string
+      version:
+        description: Version to release, e.g. "1.0.0"
+        type: string
+        required: true
+
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
+        env:
+          REPO: ${{ github.repository }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ inputs.version }}
+          release_name: v${{ inputs.version }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false

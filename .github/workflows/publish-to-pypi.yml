@@ -1,0 +1,43 @@
+name: Publish python package to PYPI
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        # This default value is consistent with the actions/checkout default value.
+        # Note however that if this is called after, say, the bump-version workflow, then
+        # this won't point to the right commit: use `main` instead in that case.
+        default: ${{ github.sha }}
+        type: string
+    secrets:
+      token:
+        required: true
+
+
+jobs:
+  publish-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      - name: Build package
+        run: python -m build
+
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.token }}
