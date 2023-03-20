@@ -20,7 +20,7 @@ on:
 jobs:
   bump_version:
     runs-on: ubuntu-latest
-    uses: ./.github/workflows/bump-version.yml@main
+    uses: ./.github/workflows/bump-version.yml
 
   build:
     needs: [bump_version]
@@ -68,7 +68,7 @@ jobs:
   docker-release:
     needs: [build, python-release]
     runs-on: ubuntu-latest
-    use: ./.github/workflows/docker-release-only.yml
+    uses: ./.github/workflows/docker-release-only.yml
     with:
       image_base_name: ${{inputs.image_base_name}}
       docker_file: ${{inputs.docker_file}}
