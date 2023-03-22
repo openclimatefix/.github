@@ -1,0 +1,27 @@
+name: Make a release in github
+inputs:
+  github_token:
+    required: true
+  version:
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Changelog
+      uses: scottbrenner/generate-changelog-action@master
+      id: changelog
+      env:
+        REPO: ${{ github.repository }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      with:
+        tag_name: v${{ inputs.version }}
+        release_name: v${{ inputs.version }}
+        body: |
+          ${{ steps.changelog.outputs.changelog }}
+        draft: false
+        prerelease: false
