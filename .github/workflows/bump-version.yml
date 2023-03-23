@@ -1,25 +1,16 @@
-# Bump the version of the repo and push the new version in a new commit.
-
 name: Bump version
-
-on:
-  workflow_call:
-    outputs:
-      new_ver:
-        description: New version number
-        value: ${{ jobs.bump-version.outputs.new_ver }}
 
 
 jobs:
-  bump-version:
+  build:
     runs-on: ubuntu-latest
     outputs:
-      new_ver: ${{ steps.bumper.outputs.new_ver }}
+      new_tag: ${{ steps.bumper.outputs.new_ver }}
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
         id: bumper
-        uses: jasonamyers/github-bumpversion-action@v1.0.5
+        uses: jasonamyers/github-bumpversion-action@v1.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push changes

@@ -1,17 +1,22 @@
 name: Bump version and auto-release
 on:
   workflow_call:
+    inputs:
+      workdir:
+        description: 'The directory of the root of the python project'
+        default: '.'
+        required: false
+        type: string
     secrets:
       token:
         required: true
 
 jobs:
-  bump-version:
-    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.1.0
-
   build:
-    needs: [bump-version]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
 
     steps:
       - uses: actions/checkout@v3
@@ -27,15 +32,30 @@ jobs:
         run: python -m build
 
   publish:
-    needs: [bump-version, build]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.workdir }}
+    needs: ["build"]
+    outputs:
+      new_tag: ${{ steps.bumper.outputs.new_ver }}
 
     steps:
       - uses: actions/checkout@v3
         with:
             fetch-depth: 0
             token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Bump version
+        id: bumper
+        uses: jasonamyers/github-bumpversion-action@v1.0.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE: ${{ inputs.workdir }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tags: true
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -51,13 +71,14 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.token }}
-          packages_dir: ./dist
+          packages_dir: ${{ inputs.workdir }}/dist
 
   release:
-    needs: [bump-version, publish]
+    needs: [publish]
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo ${{needs.publish.outputs.new_tag}}
       - name: Changelog
         uses: scottbrenner/generate-changelog-action@master
         id: Changelog
@@ -69,8 +90,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ needs.bump-version.outputs.new_ver }}
-          release_name: v${{ needs.bump-version.outputs.new_ver }}
+          tag_name: v${{ needs.publish.outputs.new_tag }}
+          release_name: v${{ needs.publish.outputs.new_tag }}
           body: |
             ${{ steps.Changelog.outputs.changelog }}
           draft: false
