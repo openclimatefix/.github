@@ -11,7 +11,7 @@ There are a number of ways for you to get involved:
    * [OCF's coding style](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
    * The main tools we use include: PyTorch, PyTorch Lighting, xarray, pandas, pvlib
 
-* Sign up to our [newsletter](https://openclimatefix.us20.list-manage.com/subscribe?u=ceb017fe32f0a4620227fda8a&id=d56fc32a31) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work
+* Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work
 * Spread the word with your networks
 * Use our code(!) by following the guidelines below.
 
