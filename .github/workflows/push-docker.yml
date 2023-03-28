@@ -27,7 +27,8 @@ on:
         default: false
 
 jobs:
-  docker-release:
+  push-docker:
+    name: Push docker @ ${{ inputs.tag_value }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

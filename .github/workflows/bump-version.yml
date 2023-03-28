@@ -12,6 +12,7 @@ on:
 
 jobs:
   bump-version:
+    name: Bump version
     runs-on: ubuntu-latest
     outputs:
       new_ver: ${{ steps.bumper.outputs.new_ver }}

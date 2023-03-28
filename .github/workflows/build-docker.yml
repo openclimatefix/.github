@@ -8,8 +8,8 @@ on:
         default: Dockerfile
 
 jobs:
-
   docker-build:
+    name: Build docker
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

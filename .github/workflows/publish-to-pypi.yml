@@ -16,6 +16,7 @@ on:
 
 jobs:
   publish-python:
+    name: Publish to PYPI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
