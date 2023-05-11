@@ -35,6 +35,11 @@ on:
         default: ''
         type: string
         required: false
+      extra_commands:
+        # Run extra commands (like compiling xgboost)
+        default: ''
+        type: string
+        required: false
 
 
 
@@ -61,6 +66,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ${{inputs.sudo_apt_install}}
+      - name: Run extra commands
+        run: |
+          ${{inputs.extra_commands}}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
