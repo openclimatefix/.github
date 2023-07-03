@@ -25,7 +25,7 @@ on:
 jobs:
   bump-version:
     # temp branch name
-    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.7.1
+    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.7.2
     secrets: inherit
 
   docker-release:

@@ -18,7 +18,7 @@ jobs:
     name: Bump version
     runs-on: ubuntu-latest
     outputs:
-      new_ver: ${{ steps.bumper.outputs.newTag }}
+      new_ver: ${{ steps.bumper.outputs.new_ver }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
