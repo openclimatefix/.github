@@ -9,7 +9,7 @@ on:
         description: New version number
         value: ${{ jobs.bump-version.outputs.new_ver }}
     secrets:
-      token:
+      TOKEN_SECRET_KEY:
         required: true
 
 
