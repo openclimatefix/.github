@@ -11,7 +11,7 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
-      TOKEN_SECRET_KEY:
+      PAT_TOKEN:
         required: true
     inputs:
       image_base_name:
@@ -25,7 +25,7 @@ on:
 jobs:
   bump-version:
     # temp branch name
-    uses: openclimatefix/.github/.github/workflows/bump-version.yml@bump-secret
+    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.3.0
     secrets: inherit
 
   docker-release:
