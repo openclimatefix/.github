@@ -22,7 +22,7 @@ on:
 
 jobs:
   bump-version:
-    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.2.0
+    uses: openclimatefix/.github/.github/workflows/bump-version.yml@bump-version
 
   docker-release:
     needs: [bump-version]
