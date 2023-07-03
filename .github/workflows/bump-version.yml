@@ -27,7 +27,8 @@ jobs:
 
       - name: Bump version and push tag
         id: bumper
-        uses: 'phips28/gh-action-bump-version@master'
+        uses: jasonamyers/github-bumpversion-action@v1.0.5
+
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
@@ -37,6 +38,5 @@ jobs:
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
           tags: true
-          force: true
 
 
