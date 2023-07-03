@@ -24,8 +24,6 @@ jobs:
       - name: Bump version and push tag
         id: bumper
         uses: jasonamyers/github-bumpversion-action@v1.0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
