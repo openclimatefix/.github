@@ -22,6 +22,7 @@ on:
 
 jobs:
   bump-version:
+    # temp branch name
     uses: openclimatefix/.github/.github/workflows/bump-version.yml@bump-secret
 
   docker-release:
