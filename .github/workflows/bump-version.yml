@@ -8,6 +8,9 @@ on:
       new_ver:
         description: New version number
         value: ${{ jobs.bump-version.outputs.new_ver }}
+    secrets:
+      PAT_TOKEN:
+        required: true
 
 
 jobs:
@@ -17,14 +20,22 @@ jobs:
     outputs:
       new_ver: ${{ steps.bumper.outputs.new_ver }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
       - name: Bump version and push tag
         id: bumper
         uses: jasonamyers/github-bumpversion-action@v1.0.5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           tags: true
+          force: true
+
+
