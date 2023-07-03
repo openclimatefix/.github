@@ -23,24 +23,14 @@ jobs:
       - name: Bump version and push tag
         id: bumper
         uses: jasonamyers/github-bumpversion-action@v1.0.5
-
-      - name: Temporarily disable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
-        with:
-          access_token: ${{ secrets.TOKEN_SECRET_KEY }}
-          branch: ${{ github.event.repository.default_branch }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          ssh: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           tags: true
           force: true
 
-      - name: Enable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()  # Force to always run this step to ensure "include administrators" is always turned back on
-        with:
-          access_token: ${{ secrets.TOKEN_SECRET_KEY }}
-          branch: ${{ github.event.repository.default_branch }}
+
