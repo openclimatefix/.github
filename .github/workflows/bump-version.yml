@@ -31,3 +31,4 @@ jobs:
         with:
           ssh-key: ${{secrets.TOKEN_GITHUB_SECRET_KEY}}
           tags: true
+          force: true
