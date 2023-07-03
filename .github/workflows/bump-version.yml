@@ -29,6 +29,6 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          ssh-key: ${{secrets.TOKEN_GITHUB_SECRET_KEY}}
+          ssh: true
           tags: true
           force: true
