@@ -18,7 +18,7 @@ jobs:
     name: Bump version
     runs-on: ubuntu-latest
     outputs:
-      new_ver: ${{ steps.bumper.outputs.new_ver }}
+      new_ver: ${{ steps.bumper.outputs.newTag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,9 +27,10 @@ jobs:
 
       - name: Bump version and push tag
         id: bumper
-        uses: jasonamyers/github-bumpversion-action@v1.0.5
+        uses: phips28/gh-action-bump-version@v10
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          commit-message: 'CI: bumps version to {{version}} [skip ci]'
 
       - name: Push changes
         uses: ad-m/github-push-action@master
