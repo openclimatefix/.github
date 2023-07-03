@@ -11,6 +11,8 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
+      TOKEN_SECRET_KEY:
+        required: true
     inputs:
       image_base_name:
         required: true
