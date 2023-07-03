@@ -15,7 +15,7 @@ on:
 
 jobs:
   bump-version:
-    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.3.0
+    uses: openclimatefix/.github/.github/workflows/bump-version.yml@v1.5.0
     secrets: inherit
 
   publish-to-pypi:
