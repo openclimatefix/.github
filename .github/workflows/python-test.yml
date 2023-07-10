@@ -118,7 +118,9 @@ jobs:
           if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
           eval $PYTEST_COMMAND
       - name: Show coverage
-        run: coverage report -m
+        run: |
+          if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
+          coverage report -m
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
         with:
