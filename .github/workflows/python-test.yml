@@ -66,15 +66,15 @@ jobs:
         run: |
           brew install ${{inputs.brew_install}}
         if: matrix.os == 'macos-latest'
-      - name: Do some Ubunutu specific installs for Python 3.9
-        if: runner.os == 'Linux' && ${{inputs.sudo_apt_install}} != ''
-        run: |
-          sudo apt-get clean
-          sudo rm -rf /var/lib/apt/lists/*
-          sudo apt-get clean
-          sudo apt-get update 
-          sudo apt-get upgrade
-          sudo apt install ${{inputs.sudo_apt_install}}
+#      - name: Do some Ubunutu specific installs for Python 3.9
+#        if: runner.os == 'Linux' && ${{inputs.sudo_apt_install}} != ''
+#        run: |
+#          sudo apt-get clean
+#          sudo rm -rf /var/lib/apt/lists/*
+#          sudo apt-get clean
+#          sudo apt-get update
+#          sudo apt-get upgrade
+#          sudo apt install ${{inputs.sudo_apt_install}}
       - name: Run extra commands
         run: |
           ${{inputs.extra_commands}}
