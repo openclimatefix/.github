@@ -67,9 +67,9 @@ jobs:
           brew install ${{inputs.brew_install}}
         if: matrix.os == 'macos-latest'
       - name: Do some Ubunutu specific installs for Python 3.9
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && ${{inputs.sudo_apt_install}} != ''
         run: |
-          sudo apt update
+          sudo apt-get update || true
           sudo apt install ${{inputs.sudo_apt_install}}
       - name: Run extra commands
         run: |
