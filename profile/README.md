@@ -20,3 +20,5 @@ There are a number of ways for you to get involved:
 In order for us to understand the use of our models, and to demonstrate impact to future funders, it is invaluable for us to know who is using the code and if possible, how. We licence the code in this repository under a permissive MIT licence and if you are using the code or deriving from it, we request that you attribute the use of Open Climate Fix’s work in your product by adding the text below:
 
 #### 'original code by [Open Climate Fix](https://github.com/openclimatefix)'
+
+If you're a contributor, we'd love for you to share your work! We ask our community to refer to themselves as an Open Climate Fix Community Contributor, specifically across social media channels and on personal CVs or portfolios. 
