@@ -80,6 +80,7 @@ jobs:
           pip install pytest-xdist
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f "setup.py" ]; then pip install -e .; else export PYTHONPATH=$PYTHONPATH:./src; fi
+          if [ -f "pyproject.toml" ]; then pip install -e .[docs]; fi
           echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
       - name: Setup with pytest-xdist
         run: |
