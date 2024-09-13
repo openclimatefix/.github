@@ -5,13 +5,11 @@ At OCF we are passionate that all the knowledge we produce remains open, to brea
 
 There are a number of ways for you to get involved:
 
-* Submit pull requests. Right now we are laser-focused on [our solar electricity forecasting project](https://github.com/openclimatefix/nowcasting):
-
-   * [List of "good first issues"](https://github.com/search?l=&p=1&q=user%3Aopenclimatefix+label%3A%22good+first+issue%22&ref=advsearch&type=Issues&utf8=%E2%9C%93&state=open): GitHub "issues" which describe changes we'd like to make to the code
-   * [OCF's coding style](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
-   * The main tools we use include: PyTorch, PyTorch Lighting, xarray, pandas, pvlib
-
+* Submit pull requests.
+* Have a look at our [List of "good first issues"](https://github.com/search?l=&p=1&q=user%3Aopenclimatefix+label%3A%22good+first+issue%22&ref=advsearch&type=Issues&utf8=%E2%9C%93&state=open): GitHub "issues" which describe changes we'd like to make to the code. Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
+* Check out which [Github repository](https://github.com/openclimatefix/ocf-meta-repo) are easy to contribute to. 
 * Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work
+* Use our datasets on [Hugging Face](https://huggingface.co/openclimatefix) or [EUMETSAT satellite data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/eumetsat-seviri-rss?hl=en-GB&project=solar-pv-nowcasting) and let us know if it was useful. 
 * Spread the word with your networks
 * Use our code(!) by following the guidelines below.
 
