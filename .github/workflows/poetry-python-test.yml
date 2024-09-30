@@ -6,6 +6,10 @@ on:
         required: false
         type: string
         default: 'unassigned'
+    secrets:
+      HUGGINGFACE_TOKEN:
+        required: false
+        description: 'Token for private HF repo'
 
 jobs:
   lint_and_test:
@@ -31,7 +35,9 @@ jobs:
         run: make lint
 
       - name: Run the tests
-        run: poetry run pytest --cov={{ inputs.pytest_cov_dir }} --cov-report=xml
+        run: |
+          export HUGGINGFACE_TOKEN=${{ secrets.HUGGINGFACE_TOKEN }}
+          poetry run pytest --cov=${{ inputs.pytest_cov_dir }} --cov-report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
