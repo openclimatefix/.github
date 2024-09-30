@@ -9,8 +9,6 @@ on:
     secrets:
       HUGGINGFACE_TOKEN:
         required: false
-        type: string
-        default: 'unassigned'
         description: 'Token for private HF repo'
 
 jobs:
