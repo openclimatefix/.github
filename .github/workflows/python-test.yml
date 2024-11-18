@@ -90,7 +90,7 @@ jobs:
           #
           # make PYTESTXDIST
           export PYTESTXDIST="-n ${{ inputs.pytest_numcpus }}"
-          if [ ${{ inputs.pytest_numcpus }} -gt 0 ]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
+          if [[ ${{ inputs.pytest_numcpus }} -gt 0 ]]; then export PYTESTXDIST="$PYTESTXDIST --dist=loadfile"; fi
           #
           # echo results and save env var for other jobs
           echo "pytest-xdist options that will be used are: $PYTESTXDIST"
@@ -106,7 +106,7 @@ jobs:
           #
           # make PYTESTCOV
           export PYTESTCOV="--cov=${{ inputs.pytest_cov_dir }} --cov-report=xml"
-          if [ ${{ inputs.pytest_cov_dir }} == "unassigned" ]; then export PYTESTCOV=""; fi
+          if [[ ${{ inputs.pytest_cov_dir }} == "unassigned" ]]; then export PYTESTCOV=""; fi
           #
           # echo results and save env var for other jobs
           echo "pytest-cov options that will be used are: $PYTESTCOV"
@@ -116,11 +116,11 @@ jobs:
           export PYTHONPATH=${PYTHONPATH}:${{ inputs.python_path }}
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
-          if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
+          if [[ ${{ inputs.test_dir }} != '' ]]; then cd ${{ inputs.test_dir }}; fi
           eval $PYTEST_COMMAND
       - name: Show coverage
         run: |
-          if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
+          if [[ ${{ inputs.test_dir }} != '' ]]; then cd ${{ inputs.test_dir }}; fi
           coverage report -m
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
