@@ -116,11 +116,11 @@ jobs:
           export PYTHONPATH=${PYTHONPATH}:${{ inputs.python_path }}
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
-          if [[ ${{ inputs.test_dir }} != '' ]]; then cd ${{ inputs.test_dir }}; fi
+          if [[ "${{ inputs.test_dir }}" != "" ]]; then cd ${{ inputs.test_dir }}; fi
           eval $PYTEST_COMMAND
       - name: Show coverage
         run: |
-          if [[ ${{ inputs.test_dir }} != '' ]]; then cd ${{ inputs.test_dir }}; fi
+          if [[ "${{ inputs.test_dir }"} != "" ]]; then cd ${{ inputs.test_dir }}; fi
           coverage report -m
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
