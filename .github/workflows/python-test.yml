@@ -120,7 +120,7 @@ jobs:
           eval $PYTEST_COMMAND
       - name: Show coverage
         run: |
-          if [[ "${{ inputs.test_dir }"} != "" ]]; then cd ${{ inputs.test_dir }}; fi
+          if [[ "${{ inputs.test_dir }}" != "" ]]; then cd ${{ inputs.test_dir }}; fi
           coverage report -m
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
