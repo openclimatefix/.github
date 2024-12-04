@@ -13,7 +13,7 @@ Here how you can get involved:
 * Submit pull requests;
 * Have a look at our [List of "good first issues"](https://github.com/search?l=&p=1&q=user%3Aopenclimatefix+label%3A%22good+first+issue%22&ref=advsearch&type=Issues&utf8=%E2%9C%93&state=open) – these are GitHub Issues which describe changes we'd like to make to the code. Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md);
 * Check out which [Github repositories](https://github.com/openclimatefix?view_as=public#overview-of-ocfs-repositories) are easy to contribute to in the section below using our (hopefully) helpful traffic light system 🚦;
-* Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Twitter](https://twitter.com/OpenClimateFix) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work;
+* Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Bluesky](https://bsky.app/profile/openclimatefix.org) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work;
 * Use our datasets on [Hugging Face](https://huggingface.co/openclimatefix) or [EUMETSAT satellite data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/eumetsat-seviri-rss?hl=en-GB&project=solar-pv-nowcasting) and let us know if it was useful;
 * Use our ML models on [Hugging Face](https://huggingface.co/openclimatefix) and let us know if it was useful;
 * Spread the word with your networks;
