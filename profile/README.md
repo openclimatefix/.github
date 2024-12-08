@@ -58,7 +58,7 @@ Click on the sections below to see the repo's.
 | [Open-Source-Quartz-Solar-Forecast](https://github.com/openclimatefix/Open-Source-Quartz-Solar-Forecast) | Open Source Solar Site Level Forecast | [Zak Watts](https://github.com/zakwatts)           | 🟢
 | [NWP consumer](https://github.com/openclimatefix/nwp-consumer)                                           | Microservice for consuming NWP data.  | [Sol Cotton](https://github.com/devsjc)            | 🟢
 | [Elexonpy](https://github.com/openclimatefix/elexonpy)                                                   | Python wrapper for UK Elexon data     | [Peter Dudfield](https://github.com/peterdudfield) | 🟢
-| [open-data-pvnet](https://github.com/openclimatefix/open-data-pvnet)     | Solar Forecasting using PVNet on Open Data    | [Peter Dudfield](https://github.com/peterdudfield) | 🟢
+| [open-data-pvnet](https://github.com/openclimatefix/open-data-pvnet)     | Solar Forecasting using PVNet on Open Data    | [Sukhil Patel](https://github.com/Sukh-P) | 🟢
 
 </details>
 
