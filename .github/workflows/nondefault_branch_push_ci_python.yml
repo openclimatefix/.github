@@ -12,7 +12,7 @@
 #
 # jobs:
 #   run_non_default_branch_push_ci:
-#     uses: openclimatefix/.github/workflows/nondefault_branch_push_ci_python.yml@main
+#     uses: openclimatefix/.github/.github/workflows/nondefault_branch_push_ci_python.yml@main
 #     with:
 #       containerfile: Containerfile
 #     secrets: inherit
