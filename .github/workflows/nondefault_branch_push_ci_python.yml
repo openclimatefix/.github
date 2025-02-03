@@ -47,7 +47,7 @@ on:
         required: false
         type: string
       tests_runner:
-        description: 'Which test runner to use (`pytest` or `unittest`)
+        description: 'Which test runner to use (`pytest` or `unittest`)'
         default: 'pytest'
         required: false
         type: string
@@ -127,6 +127,7 @@ jobs:
 
       # Run unittests
       # * Produce JUnit XML report
+      # * TODO: Work out how to pass environment variables to test
       - name: Run unit tests (with pytest)
         if: ${{ inputs.test_runner == "pytest" || inputs.test_runner != "unittest" }}
         run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
