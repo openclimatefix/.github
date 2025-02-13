@@ -135,9 +135,11 @@ jobs:
 
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
+        env:
+          PYTHON_VERSION: ${{ steps.setup-py.outputs.python-version }}
         run: >
           conda create --quiet --yes -p .venv 
-          python=${{ steps.setup-py.outputs.python-version }} 
+          python=${PYTHON_VERSION%.*}
           ${{ inputs.tests_conda_deps }}
 
       - name: Install editable package and required dependencies
