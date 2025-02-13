@@ -129,12 +129,16 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v5
+        id: setup-py
         with:
           python-version-file: "pyproject.toml"
 
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
-        run: conda create --quiet --yes -p .venv python=$(python -V | awk '{print $2}') ${{ inputs.tests_conda_deps }}
+        run: >
+          conda create --quiet --yes -p .venv 
+          python=${{ steps.setup-py.outputs.python-version }} 
+          ${{ inputs.tests_conda_deps }}
 
       - name: Install editable package and required dependencies
         run: uv sync --inexact
