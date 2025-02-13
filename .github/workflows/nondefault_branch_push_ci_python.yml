@@ -133,7 +133,7 @@ jobs:
 
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
-        run: conda create --quiet --yes -p .venv python=3.12 ${{ inputs.tests_conda_deps }}
+        run: conda create --quiet --yes -p .venv python=$(python -V | awk '{print $2}') ${{ inputs.tests_conda_deps }}
 
       - name: Install editable package and required dependencies
         run: uv sync --inexact
