@@ -45,6 +45,7 @@ jobs:
   # Use #major #minor in merge commit messages to bump version beyond patch
   bump-tag:
     runs-on: ubuntu-latest
+    # Better to run on merged PR's only, but can be run on pushes to main if desired
     if: |
       (github.event_name == 'pull_request' && 
       github.event.action == 'closed' && 
