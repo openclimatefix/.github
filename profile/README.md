@@ -15,7 +15,7 @@ Here's how you can get involved:
 * Check out which [Github repositories](https://github.com/openclimatefix?view_as=public#overview-of-ocfs-repositories) are easy to contribute to in [the section below](https://github.com/openclimatefix/.github/edit/os-instructions/profile/README.md#how-easy-is-it-to-get-involved) using our (hopefully) helpful traffic light system 🚦;
 * Have a look at our [List of "good first issues"](https://github.com/search?l=&p=1&q=user%3Aopenclimatefix+label%3A%22good+first+issue%22&ref=advsearch&type=Issues&utf8=%E2%9C%93&state=open) – these are GitHub Issues which do not require extensive familiarity with our code and should help get you started;
 * **Before you submit a pull request**, please ask to be assigned to the issue! Some issues are there for us to get back to and unfortunately might be completely inaccessible to OS contribution. Asking to be assigned first will prevent you from doing unnecessary work and lets everybody else know you're working on this already, so we don't get multiple PRs for the same issue;
-* Submit you PR and tag someone for a review! Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
+* Submit you PR and tag someone for a review! Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md);
 * First time contributing? Here's a [quick guide from firstcontributions](https://github.com/firstcontributions/first-contributions) to help you get started!
 
 ### Other ways to get involved
