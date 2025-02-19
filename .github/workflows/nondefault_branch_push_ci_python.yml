@@ -58,11 +58,6 @@ on:
         default: ''
         required: false
         type: string
-      build_container:
-        description: 'Whether to build a container image'
-        default: true
-        required: false
-        type: boolean
 
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
@@ -172,7 +167,7 @@ jobs:
       contents: read
       packages: write
     needs: ["lint-typecheck", "test-unit"]
-    if: inputs.build_container
+    if:  github.repository_owner == 'openclimatefix'
 
     steps:
       # Do a non-shallow clone of the repo to ensure tags are present
