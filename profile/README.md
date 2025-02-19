@@ -24,6 +24,7 @@ Here's how you can get involved:
 * Use our datasets on [Hugging Face](https://huggingface.co/openclimatefix) or [EUMETSAT satellite data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/eumetsat-seviri-rss?hl=en-GB&project=solar-pv-nowcasting) and let us know if it was useful;
 * Use our ML models on [Hugging Face](https://huggingface.co/openclimatefix) and let us know if it was useful;
 * Spread the word with your networks;
+* Already contributed? Add OCF to the skills or volunteering section of your LinkedIn!
 * Use our code(!) by following the guidelines below.
 
 
