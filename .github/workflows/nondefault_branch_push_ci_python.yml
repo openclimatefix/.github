@@ -25,7 +25,7 @@ on:
       containerfile:
         description: >
           Path to the containerfile for building the image.
-          Pass an empty string to skip building.
+          Pass 'None' to skip building.
         default: 'Dockerfile'
         required: false
         type: string
@@ -98,7 +98,8 @@ jobs:
 
       - name: Lint package
         if: ${{ inputs.enable_linting }}
-        run: uv run ruff check --output-format=github .
+        run: |
+          uv run ruff check --output-format=github .
 
       - name: Typecheck package
         if: ${{ inputs.enable_typechecking }}
@@ -169,7 +170,7 @@ jobs:
       contents: read
       packages: write
     needs: ["lint-typecheck", "test-unit"]
-    if: ${{ github.repository_owner != 'openclimatefix' }} && ${{ inputs.containerfile }} # Empty string evaluates to false
+    if: ${{ inputs.containerfile != 'None' && github.repository_owner == 'openclimatefix' }}
 
     steps:
       # Do a non-shallow clone of the repo to ensure tags are present

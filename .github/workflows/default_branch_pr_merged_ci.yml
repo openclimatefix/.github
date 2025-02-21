@@ -23,7 +23,9 @@ on:
   workflow_call:
     inputs:
       containerfile:
-        description: 'Path to the containerfile for building the image'
+        description: >
+          Path to the containerfile for building the image.
+          Pass 'None' to prevent building an image.
         default: 'Dockerfile'
         required: false
         type: string
@@ -80,6 +82,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+    if: ${{ inputs.containerfile != 'None' }}
 
     steps:
       # Do a non-shallow clone of the repo to ensure tags are present
