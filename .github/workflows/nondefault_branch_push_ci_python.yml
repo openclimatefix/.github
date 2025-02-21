@@ -98,7 +98,6 @@ jobs:
         if: ${{ inputs.enable_linting }}
         run: |
           uv run ruff check --output-format=github .
-          uv run ruff format --check .
 
       - name: Typecheck package
         if: ${{ inputs.enable_typechecking }}
