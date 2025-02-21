@@ -170,7 +170,7 @@ jobs:
       contents: read
       packages: write
     needs: ["lint-typecheck", "test-unit"]
-    if: ${{ inputs.containerfile != 'None' && github.repository_owner == 'openclimatefix' }}
+    if: ${{ inputs.containerfile != 'None' && github.repository_owner == 'openclimatefix' && github.event_name != 'pull_request' }}
 
     steps:
       # Do a non-shallow clone of the repo to ensure tags are present
