@@ -80,6 +80,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+    if: ${{ inputs.containerfile }} # An empty string evaluates to false
 
     steps:
       # Do a non-shallow clone of the repo to ensure tags are present
