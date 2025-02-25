@@ -124,7 +124,7 @@ Click on the sections below to see the repo's.
 
 | Repo                                                                       | Description  |    Main Developer      | Easy to contribute ? |
 |----------------------------------------------------------------------------|------------------------|-------| --- |
-| [india-api](https://github.com/openclimatefix/india-api)                   | API India solar and wind data | [Sol Cotton](https://github.com/devsjc) and Peter Dudfield](https://github.com/peterdudfield) | 🟢
+| [india-api](https://github.com/openclimatefix/india-api)                   | API India solar and wind data | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟢
 | [india-forecast-app](https://github.com/openclimatefix/india-forecast-app) | Runs wind and PV forecasts for India and saves to database | [Sukhil Patel](https://github.com/Sukh-P) and [Peter Dudfield](https://github.com/peterdudfield) | 🔴
 
 </details>
