@@ -77,8 +77,8 @@ Click on the sections below to see the repo's.
 | Repo                                                                       | Description                                                                                                                                                                                                                                                                                                                              | Main Developer                                     | Easy to contribute? |
 |----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|---------------------|
 | [ocf-data-sampler](https://github.com/openclimatefix/ocf-data-sampler)                   | Library for creating samples suitable for ML from weather and power datasets | [James Fulton](https://github.com/dfulu) and [Alex](TODO) | 🟢
-| [PVnet](https://github.com/openclimatefix/pvnet)                           | PV net main repo | [James Fulton](https://github.com/dfulu), [Sukhil Patel](https://github.com/Sukh-P) and [Alex]() | 🔴
-| [PVNet-summation](https://github.com/openclimatefix/PVNet-summation)       | This project is used for training a model to sum the GSP predictions of PVNet into a national estimate     | [James Fulton](https://github.com/dfulu) and [Felix](TODO) | 🔴                 |
+| [PVnet](https://github.com/openclimatefix/pvnet)                           | PV net main repo | [James Fulton](https://github.com/dfulu), [Sukhil Patel](https://github.com/Sukh-P) and [Alex Udaltsova](https://github.com/AUdaltsova) | 🔴
+| [PVNet-summation](https://github.com/openclimatefix/PVNet-summation)       | This project is used for training a model to sum the GSP predictions of PVNet into a national estimate     | [James Fulton](https://github.com/dfulu) and [Felix Peretz](https://github.com/felix-e-h-p) | 🔴                 |
 | [pv-site-prediction](https://github.com/openclimatefix/pv-site-prediction) | ML experiments and models for SBRI project | [Zak Watts](https://github.com/zakwatts) and [Peter Dudfield](https://github.com/peterdudfield) | 🔴
 | [UK PV National XG](https://github.com/openclimatefix/uk-pv-national-xg)   | National GSP PV forecasting using Gradient Boosted Methods.     | [Peter Dudfield](https://github.com/peterdudfield) and [Sukhil Patel](https://github.com/Sukh-P)  | 🔴                 |
 
@@ -102,7 +102,7 @@ Click on the sections below to see the repo's.
 | [pv-site-datamodel](https://github.com/openclimatefix/pv-site-datamodel)           | Datamodel for PV sites | [Peter Dudfield](https://github.com/peterdudfield) and [Sol Cotton](https://github.com/devsjc) | 🟢
 | [ocf-infrastructure](https://github.com/openclimatefix/ocf-infrastructure)                | Infrastructure code for OCF's cloud environments  | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟠
 | [Satip](https://github.com/openclimatefix/satip)                                   | Satip contains the code necessary for retrieving, transforming and storing EUMETSAT data | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟠
-| [analysis-dashboard ](https://github.com/openclimatefix/uk-analysis-dashboard )    | This is a Streamlit app for the OCF team that reports database statistics | [Peter Dudfield](https://github.com/peterdudfield) and [Aditya](TODO) | 🔴
+| [analysis-dashboard ](https://github.com/openclimatefix/uk-analysis-dashboard )    | This is a Streamlit app for the OCF team that reports database statistics | [Peter Dudfield](https://github.com/peterdudfield) and [Aditya Sawant](https://github.com/ADIMANV) | 🔴
 | [Nowcasting Alerts Cron](https://github.com/openclimatefix/nowcasting_alerts_cron) | Nowcasting Alerts cron Worker | [Brad Fulford](https://github.com/braddf) and [Sol Cotton](https://github.com/devsjc) | 🔴
 
 ## UK
@@ -136,7 +136,7 @@ Click on the sections below to see the repo's.
 | [GFS Downloader](https://github.com/openclimatefix/gfs-downloader)       | NCEP GFS 0.25 Degree Global Forecast Grids Historical Archive: https://rda.ucar.edu/datasets/ds084.1/ | [Zak Watts](https://github.com/zakwatts) | 🟢
 | [OCF Blocs2](https://github.com/openclimatefix/ocf_blosc2)               | Blosc2 codec used for OCF's Zarr compression | [Peter Dudfield](https://github.com/peterdudfield) | 🟢
 | [Solar and Storage](https://github.com/openclimatefix/solar-and-storage) | Solar and Storage optimization code | [Peter Dudfield](https://github.com/peterdudfield) | 🟢
-| [Status API](TODO) | TODO | [Brad Fulford](https://github.com/braddf) and [Sol Cotton](https://github.com/devsjc) | 🟠
+| [Status API](https://github.com/openclimatefix/quartz-status) | Status API for Quartz ecosystem | [Brad Fulford](https://github.com/braddf) and [Sol Cotton](https://github.com/devsjc) | 🟠
 | [.github](https://github.com/openclimatefix/.github)                     | Various Community Health Files | [Peter Dudfield](https://github.com/peterdudfield) | 🔴
 
 
