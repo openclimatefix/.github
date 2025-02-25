@@ -101,7 +101,7 @@ Click on the sections below to see the repo's.
 |------------------------------------------------------------------------------------|------------------------|-------| --- |
 | [pv-site-datamodel](https://github.com/openclimatefix/pv-site-datamodel)           | Datamodel for PV sites | [Peter Dudfield](https://github.com/peterdudfield) and [Sol Cotton](https://github.com/devsjc) | 🟢
 | [ocf-infrastructure](https://github.com/openclimatefix/ocf-infrastructure)                | Infrastructure code for OCF's cloud environments  | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟠
-| [Satip](https://github.com/openclimatefix/satip)                                   | Satip contains the code necessary for retrieving, transforming and storing EUMETSAT data | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟠
+| [Satellite Consumer](https://github.com/openclimatefix/satellite-consumer)                                   | Consumer for Satellite data | [Sol Cotton](https://github.com/devsjc) and [Peter Dudfield](https://github.com/peterdudfield) | 🟠
 | [analysis-dashboard ](https://github.com/openclimatefix/uk-analysis-dashboard )    | This is a Streamlit app for the OCF team that reports database statistics | [Peter Dudfield](https://github.com/peterdudfield) and [Aditya Sawant](https://github.com/ADIMANV) | 🔴
 | [Nowcasting Alerts Cron](https://github.com/openclimatefix/nowcasting_alerts_cron) | Nowcasting Alerts cron Worker | [Brad Fulford](https://github.com/braddf) and [Sol Cotton](https://github.com/devsjc) | 🔴
 
