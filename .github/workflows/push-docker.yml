@@ -1,12 +1,7 @@
-name: Build and publish to Docker Hub
+name: Build and publish to GHCR
 
 on:
   workflow_call:
-    secrets:
-      DOCKERHUB_USERNAME:
-        required: true
-      DOCKERHUB_TOKEN:
-        required: true
     inputs:
       image_base_name:
         required: true
@@ -19,51 +14,42 @@ on:
         required: true
         type: string
       checkout_submodules:
-        description: Forwarded to `submodule` input of the `actions/checkout` step.
         type: boolean
         required: false
-        # Default: false
-        # See: https://github.com/actions/checkout/tree/v2
         default: false
 
 jobs:
   push-docker:
-    name: Push docker @ ${{ inputs.tag_value }}
+    name: Push Docker Image to GHCR @ ${{ inputs.tag_value }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          # Using `main` because so far this has always been done *after* a bump-version, which adds
-          # a commit on top of the default commit to which the action would be otherwise pointing.
           ref: main
           submodules: ${{ inputs.checkout_submodules }}
-      - name: Docker meta
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Generate Docker Image Metadata
         id: meta
         uses: docker/metadata-action@v3
         with:
-          # list of Docker images to use as base name for tags
-          # TODO make more flexible
           images: |
-            openclimatefix/${{ inputs.image_base_name }}
+            ghcr.io/openclimatefix/${{ inputs.image_base_name }}
           tags: |
             type=raw,value=${{ inputs.tag_value }}
-          flavor: |
-            latest=true
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          flavor: latest=true
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: openclimatefix
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
+
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           context: .
