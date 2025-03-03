@@ -29,6 +29,10 @@ on:
         default: 'Dockerfile'
         required: false
         type: string
+    outputs:
+      tag:
+        description: The new tag created by the version bump
+        value: ${{ jobs.bump-tag.outputs.tag }}
 
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
