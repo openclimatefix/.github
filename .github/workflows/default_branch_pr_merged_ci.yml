@@ -142,6 +142,8 @@ jobs:
   build-wheel:
     runs-on: ubuntu-latest
     needs: bump-tag
+    permissions:
+      id-token: write
     if: ${{ inputs.enable_pypi }}
     
     steps:
