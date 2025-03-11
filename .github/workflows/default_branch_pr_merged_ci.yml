@@ -167,5 +167,5 @@ jobs:
         run: uv build
 
       - name: Publish package
-        run: uv publish
+        run: uv publish -t ${{ secrets.PYPI_API_TOKEN }}
     
