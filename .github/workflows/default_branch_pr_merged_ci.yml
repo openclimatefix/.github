@@ -29,13 +29,13 @@ on:
         default: 'Dockerfile'
         required: false
         type: string
-      pypi_token:
+      enable_pypi:
         description: >
-          Token to use to publish to PyPI.
-          Pass 'None' to prevent publishing to PyPI.
-        default: 'None'
-        required: False
-        type: string
+          Whether to build a wheel and publish to PyPI.
+          Ensure calling workflow is a trusted PyPI source.
+        default: false
+        required: false
+        type: boolean
     outputs:
       tag:
         description: The new tag created by the version bump
@@ -142,7 +142,7 @@ jobs:
   build-wheel:
     runs-on: ubuntu-latest
     needs: bump-tag
-    if: ${{ inputs.pypi_token != 'None' }}
+    if: ${{ inputs.enable_pypi }}
     
     steps:
       - name: Checkout
@@ -165,5 +165,5 @@ jobs:
         run: uv build
 
       - name: Publish package
-        run: uv publish --token ${{ inputs.pypi_token }}
+        run: uv publish
     
