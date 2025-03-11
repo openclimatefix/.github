@@ -29,10 +29,13 @@ on:
         default: 'Dockerfile'
         required: false
         type: string
-      enable_pypi:
-      description: Whether to build a wheel and deploy to PyPI
-      default: false
-      type: boolean
+      pypi_token:
+        description: >
+          Token to use to publish to PyPI.
+          Pass 'None' to prevent publishing to PyPI.
+        default: 'None'
+        required: False
+        type: string
     outputs:
       tag:
         description: The new tag created by the version bump
@@ -139,7 +142,7 @@ jobs:
   build-wheel:
     runs-on: ubuntu-latest
     needs: bump-tag
-    if: ${{ inputs.enable_pypi }}
+    if: ${{ inputs.pypi_token != 'None' }}
     
     steps:
       - name: Checkout
@@ -162,5 +165,5 @@ jobs:
         run: uv build
 
       - name: Publish package
-        run: uv publish --token ${{ secrets.token }}
+        run: uv publish --token ${{ inputs.pypi_token }}
     
