@@ -14,6 +14,10 @@ jobs:
     name: Github release
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to bump_tag.yml"
+          
       - name: Changelog
         uses: scottbrenner/generate-changelog-action@master
         id: Changelog
