@@ -31,6 +31,10 @@ jobs:
     name: Push docker @ ${{ inputs.tag_value }}
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to publish_docker.yml"
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
