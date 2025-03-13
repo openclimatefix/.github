@@ -1,23 +1,7 @@
 # Workflow that should run on pushes to non-default branches, for Python
 # * Lints, tests, and builds dev containers with branch changes
-#
-# Example usage:
-#
-# name: Non-Default Branch Push CI (Python)
-#
-# on:  
-#   push:
-#     branches-ignore: ['main']
-#     paths-ignore: ['README.md']
-#
-# jobs:
-#   branch_ci:
-#     uses: openclimatefix/.github/.github/workflows/branch_ci.yml@main
-#     with:
-#       enable_typechecking: false
-#     secrets: inherit
 
-name: Non-Default Branch Push CI (Python)
+name: Branch CI (Python)
 
 on:
   workflow_call:
