@@ -2,6 +2,7 @@
 # * Lints, tests, and builds dev containers with branch changes
 
 name: Branch CI (Python)
+run-name: Branch CI for ${{ github.ref_name }} by ${{ github.actor }}
 
 on:
   workflow_call:
