@@ -1,24 +1,8 @@
 # Workflow that should run on new semver tags
-# * Builds docker images and python wheels
-#
-# Example usage:
-#
-# name: Tagged CI
-# run-name: 
-#
-# on:
-#   push:
-#     tags: ["v*.*.*"]
-#
-# jobs:
-#   tagged_ci:
-#     uses: openclimatefix/.github/.github/workflows/tagged_ci.yml@main
-#     with:
-#       containerfile: Containerfile
-#     secrets: inherit
+# * Publishes tagged docker images and python wheels
 
 name: Tagged CI
-run-name: CI for tag ${{ github.ref_name }}
+run-name: CI for tag ${{ github.ref_name }} by ${{ github.actor }}
 
 on:
   workflow_call:
