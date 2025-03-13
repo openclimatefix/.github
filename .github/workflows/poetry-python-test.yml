@@ -16,6 +16,10 @@ jobs:
     name: Lint the code and run the tests
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to branch_ci.yml"
+
       - name: Check out the repo
         uses: actions/checkout@v4
 

@@ -19,6 +19,10 @@ jobs:
     name: Publish to PYPI
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to tagged_ci.yml"
+  
       - name: Checkout
         uses: actions/checkout@v2
         with:

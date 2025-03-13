@@ -1,4 +1,5 @@
-name: Non-Default Branch Push CI (Python)
+name: Branch CI
+run-name: Branch CI for ${{ github.ref_name }} by ${{ github.actor }}
 
 on:  
   push:
@@ -6,6 +7,8 @@ on:
     paths-ignore: ['README.md']
 
 jobs:
-  run_non_default_branch_push_ci:
-    uses: openclimatefix/.github/.github/workflows/nondefault_branch_push_ci_python.yml@main
+  branch_ci:
+    uses: openclimatefix/.github/.github/workflows/branch_ci.yml@main
+    with:
+      enable_typechecking: false
     secrets: inherit
