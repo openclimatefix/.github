@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Echo Deprecation Warning
         run: |
-          echo "::warning Deprecated action. Migrate to publish_docker.yml"
+          echo "::warning Deprecated action. Migrate to branch_ci.yml and tagged_ci.yml"
 
       - name: Checkout
         uses: actions/checkout@v2
