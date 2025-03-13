@@ -1,11 +1,11 @@
-name: Default Branch PR Merged CI
+name: Tagged CI
+run-name: Tagged CI for ${{ github.ref_name }} by ${{ github.actor }}
 
 on:
-  pull_request:
-    types: ["closed"]
-    branches: [ $default-branch ]
+  push:
+    tags: ["v*.*.*"]
 
 jobs:
-  run_default_branch_pr_merged_ci:
-    uses: openclimatefix/.github/.github/workflows/default_branch_pr_merged_ci.yml@main
+  tagged_ci:
+    uses: openclimatefix/.github/.github/workflows/tagged_ci.yml@main
     secrets: inherit
