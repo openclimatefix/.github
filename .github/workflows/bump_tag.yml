@@ -1,3 +1,13 @@
+# Workflow to bump tags
+#
+# name: Bump Tag
+#
+# on:
+#   pull_request:
+#     types: ["closed"]
+#     branches: [ "main" ]
+#
+
 name: Bump Tag
 
 on:
