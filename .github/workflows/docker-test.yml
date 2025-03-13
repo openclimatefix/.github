@@ -12,6 +12,10 @@ jobs:
     name: Build docker and test
     runs-on: ubuntu-latest
     steps:
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to test_python.yml"
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
