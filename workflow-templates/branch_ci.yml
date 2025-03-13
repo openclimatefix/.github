@@ -1,4 +1,5 @@
 name: Branch CI
+run-name: Branch CI for ${{ github.ref_name }} by ${{ github.actor }}
 
 on:  
   push:
