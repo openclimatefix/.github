@@ -12,6 +12,9 @@ jobs:
     name: Build docker
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Warning Annotations
+        run: |
+          echo "::warning Deprecated action. Migrate to publish_docker.yml"
       - name: Checkout
         uses: actions/checkout@v2
         with:
