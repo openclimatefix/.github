@@ -1,3 +1,6 @@
+# Workflow to bump and push the Git tag for a repo
+# * Use #major/#minor in commit message to bump beyond patch
+
 name: Bump Tag
 
 on:
