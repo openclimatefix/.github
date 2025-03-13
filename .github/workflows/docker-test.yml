@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Echo Deprecation Warning
         run: |
-          echo "::warning Deprecated action. Migrate to test_python.yml"
+          echo "::warning Deprecated action. Migrate to branch_ci.yml"
 
       - name: Checkout
         uses: actions/checkout@v2
