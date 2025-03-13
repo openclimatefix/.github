@@ -1,0 +1,44 @@
+name: Bump Tag
+
+on:
+  workflow_call:
+    outputs:
+      tag:
+        description: The new tag created by the version bump
+        value: ${{ jobs.bump-tag.outputs.tag }}
+
+jobs:
+
+  # Define an autotagger job that creates tags on changes to master
+  # Use #major #minor in merge commit messages to bump version beyond patch
+  bump-tag:
+    runs-on: ubuntu-latest
+    # Better to run on merged PR's only, but can be run on pushes to main if desired
+    if: >
+      github.event_name == 'push' ||
+      (
+         contains(github.event_name, 'pull_request') && 
+         github.event.action == 'closed' && 
+         github.event.pull_request.merged == true
+      )
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.OCF_BOT_PAT_TOKEN }}
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.67.0
+        id: tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
+          RELEASE_BRANCHES: main
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          GIT_API_TAGGING: false
