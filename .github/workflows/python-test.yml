@@ -59,7 +59,7 @@ jobs:
     steps:
       - name: Echo Deprecation Warning
         run: |
-          echo "::warning Deprecated action. Migrate to test_python.yml and pyproject.toml"
+          echo "::warning Deprecated action. Migrate to branch_ci.yml"
 
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
