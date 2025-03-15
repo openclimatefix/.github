@@ -26,9 +26,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: main
           submodules: ${{ inputs.checkout_submodules }}
           
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to branch_ci.yml and tagged_ci.yml"
+
       - name: Echo Deprecation Warning
         run: |
           echo "::warning Deprecated action. Migrate to branch_ci.yml and tagged_ci.yml"
@@ -40,10 +43,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: |
-            ghcr.io/openclimatefix/${{ inputs.image_base_name }}
-          tags: |
-            type=raw,value=${{ inputs.tag_value }}
+          images: ghcr.io/openclimatefix/${{ inputs.image_base_name }}
+          tags: type=raw,value=${{ inputs.tag_value }}
           flavor: latest=true
 
       - name: Login to GitHub Container Registry
