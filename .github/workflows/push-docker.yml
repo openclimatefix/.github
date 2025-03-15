@@ -23,19 +23,15 @@ jobs:
     name: Push Docker Image to GHCR @ ${{ inputs.tag_value }}
     runs-on: ubuntu-latest
     steps:
- upadte-gchr
       - name: Checkout Repository
-
-      - name: Echo Deprecation Warning
-        run: |
-          echo "::warning Deprecated action. Migrate to branch_ci.yml and tagged_ci.yml"
-
-      - name: Checkout
- main
         uses: actions/checkout@v2
         with:
           ref: main
           submodules: ${{ inputs.checkout_submodules }}
+          
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to branch_ci.yml and tagged_ci.yml"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
