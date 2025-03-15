@@ -20,6 +20,11 @@ jobs:
     outputs:
       new_ver: ${{ steps.bumper.outputs.new_ver }}
     steps:
+
+      - name: Echo Deprecation Warning
+        run: |
+          echo "::warning Deprecated action. Migrate to bump_tag.yml"
+    
       - name: Checkout
         uses: actions/checkout@v3
         with:
