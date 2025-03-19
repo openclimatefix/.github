@@ -18,7 +18,6 @@ Here's how you can get involved:
 * **Before you submit a pull request**, please ask to be assigned to the issue! Some issues are there for us to get back to and unfortunately might be completely inaccessible to OS contribution. Asking to be assigned first will prevent you from doing unnecessary work and lets everybody else know you're working on this already, so we don't get multiple PRs for the same issue;
 * Once you're assigned to an issue, submit your PR and tag someone for a review! Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md);
 * First time contributing? Here's a [quick guide from firstcontributions](https://github.com/firstcontributions/first-contributions) to help you get started!
-
 * Join our [GitHub Discussions](https://github.com/orgs/openclimatefix/discussions) to ask questions, share ideas, or engage with the community.
 
 ### Other ways to get involved
@@ -28,8 +27,6 @@ Here's how you can get involved:
 * Spread the word with your networks;
 * Already contributed? Add OCF to the skills or volunteering section of your LinkedIn!
 * Use our code(!) by following the guidelines below.
-
-
 <details><summary><a>
   <h2>What if you use our code?</h2> <small>[ Click to expand ]</small>
 </a></summary>
@@ -55,7 +52,6 @@ We've set up this traffic light legend, so you can see how easy it is to get inv
 | [![ease of contribution: hard](https://img.shields.io/badge/ease%20of%20contribution:%20hard-bb2629)](https://github.com/openclimatefix#how-easy-is-it-to-get-involved) | We would not recommend going into these projects. They haven't been made "nice" and it might take a lot of digging in the code to understand what's going on.      |
 
 You will usually see one of the corresponding badges on the repo's README.
-
 
 ## Overview of OCF's repositories
 
