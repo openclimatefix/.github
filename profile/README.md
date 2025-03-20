@@ -19,6 +19,7 @@ Here's how you can get involved:
 * Once you're assigned to an issue, submit your PR and tag someone for a review! Our coding style is [here](https://github.com/openclimatefix/.github/blob/main/coding_style.md);
 * First time contributing? Here's a [quick guide from firstcontributions](https://github.com/firstcontributions/first-contributions) to help you get started!
 * Join our [GitHub Discussions](https://github.com/orgs/openclimatefix/discussions) to ask questions, share ideas, or engage with the community.
+
 ### Other ways to get involved
 * Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Bluesky](https://bsky.app/profile/openclimatefix.org) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work;
 * Use our datasets on [Hugging Face](https://huggingface.co/openclimatefix) or [EUMETSAT satellite data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/eumetsat-seviri-rss?hl=en-GB&project=solar-pv-nowcasting) and let us know if it was useful;
