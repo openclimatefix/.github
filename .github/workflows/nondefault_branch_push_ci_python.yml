@@ -149,6 +149,8 @@ jobs:
       # * TODO: Work out how to pass environment variables to test
       - name: Run unit tests (with pytest)
         if: ${{ inputs.tests_runner != 'unittest' }}
+        env:
+           HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
         run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
       - name: Run unit tests (with unittest)
         if: ${{ inputs.tests_runner == 'unittest' }}
