@@ -171,7 +171,7 @@ jobs:
       # Create test summary to be visualised on the job summary screen on GitHub
       # * Runs even if previous steps fail
       - name: Create test summary
-        uses: test-summary/action@v2
+        uses: test-summary/action@31493c76ec9e7aa675f1585d3ed6f1da69269a86 # v2.4.0
         with:
           paths: "*t-report.xml"
           show: "fail, skip"
