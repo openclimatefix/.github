@@ -52,7 +52,11 @@ on:
         default: false
         required: false
         type: boolean
-
+      test_python_versions:
+        description: 'Which python verions to use'
+        default: '["3.10", "3.11", "3.12"]'
+        type: string
+        
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
 concurrency:
@@ -111,7 +115,7 @@ jobs:
         id: versions
         run: |
           if [ "$USE_MATRIX" = true ]; then
-          echo 'versions=["3.10", "3.11", "3.12"]' >> "$GITHUB_OUTPUT";
+          echo 'versions='${{ inputs.test_python_versions }} >> "$GITHUB_OUTPUT";
           else echo 'versions=["default"]' >> "$GITHUB_OUTPUT";
           fi
 
