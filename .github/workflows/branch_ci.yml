@@ -115,7 +115,7 @@ jobs:
         id: versions
         run: |
           if [ "$USE_MATRIX" = true ]; then
-          echo 'versions='${{ inputs.test_python_versions }} >> "$GITHUB_OUTPUT";
+          echo "versions=${{ inputs.test_python_versions }}" >> "$GITHUB_OUTPUT";
           else echo 'versions=["default"]' >> "$GITHUB_OUTPUT";
           fi
 
