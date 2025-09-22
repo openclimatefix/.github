@@ -54,7 +54,7 @@ on:
         type: boolean
       test_python_versions:
         description: 'Which python verions to use'
-        default: '["3.10", "3.11", "3.12"]'
+        default: '["3.11", "3.12"]'
         type: string
         
 # Specify concurrency such that only one workflow can run at a time
