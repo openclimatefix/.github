@@ -1,8 +1,10 @@
-## Code formatting
-We use [Black](https://black.readthedocs.io/en/stable/) to format our Python code.  We use these changes to Black's default settings:
-- `max-line-length = 100` (_why_ do we allow up to 100 characters per line, unlike a lot of Python code that limits lines to 80 characters?  For the same reason that [Linus Torvalds recently changed the Linux kernel coding guidelines to allow up to 100 characters per line](https://linux.slashdot.org/story/20/05/31/211211/linus-torvalds-argues-against-80-column-line-length-coding-style-as-linux-kernel-deprecates-it) :) )
+# Python Coding Style
 
-We use [Ruff](https://beta.ruff.rs/docs/) for all other code linting, such as docstrings, import sorting, and flake8. The `.ruff.toml` in our repository template has the configuration that we use across all our repositories. This also allows easy local usage, as the only command that needs to run is `ruff check` or `ruff --fix` for code to be linted and some of the issues auto-fixed. 
+## Package management
+We use [uv](https://astral.sh/uv/) to handle creation of reproducible environments and packaging of code. All projects should use a source-layout: either use the ocf-template repository as a base or run `uv init --package your-new-package-name` to start a new repository with the correct project structure.
+
+## Code formatting
+We use [Ruff](https://astral.sh/ruff/) for formatting and code linting, such as docstrings, import sorting, and flake8. The `.pyproject.toml` in our repository template has the configuration that we use across all our repositories. This also allows easy local usage, as the only command that needs to run is `ruff check --fix` or `ruff format` for code to be formated, linted, and some of the issues auto-fixed. 
 
 ### Docstrings
 We use [Google-style docstrings](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings).
