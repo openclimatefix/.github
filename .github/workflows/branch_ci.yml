@@ -94,7 +94,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
-          python-version-file: ${{ inputs.working_directory }}"/pyproject.toml"
+          python-version-file: "${{ inputs.working_directory }}/pyproject.toml"
 
       - name: Install editable package and required dependencies
         if: ${{ inputs.enable_linting || inputs.enable_typechecking }}
