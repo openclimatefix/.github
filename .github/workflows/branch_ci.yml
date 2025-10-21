@@ -59,7 +59,7 @@ on:
       working_directory:
         description: >
           The working directory to run the workflow in.
-          Pass './' to run in the root of the repository.
+          Default is '.', the root of the repository.
         default: '.'
         required: false
         type: string
