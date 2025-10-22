@@ -56,6 +56,13 @@ on:
         description: 'Which python verions to use'
         default: '["3.10", "3.11", "3.12"]'
         type: string
+      working_directory:
+        description: >
+          The working directory to run the workflow in.
+          Default is '.', the root of the repository.
+        default: '.'
+        required: false
+        type: string
         
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
@@ -87,19 +94,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
-          python-version-file: "pyproject.toml"
+          python-version-file: "${{ inputs.working_directory }}/pyproject.toml"
 
       - name: Install editable package and required dependencies
         if: ${{ inputs.enable_linting || inputs.enable_typechecking }}
+        working-directory: ${{ inputs.working_directory }}
         run: uv sync
 
       - name: Lint package
         if: ${{ inputs.enable_linting }}
+        working-directory: ${{ inputs.working_directory }}
         run: |
           uv run ruff check --output-format=github .
 
       - name: Typecheck package
         if: ${{ inputs.enable_typechecking }}
+        working-directory: ${{ inputs.working_directory }}
         run: uv run mypy .
         # TODO: GitHub output when https://github.com/python/mypy/pull/17771 merged
 
@@ -139,7 +149,7 @@ jobs:
         uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb # v6.1.0
         with:
           enable-cache: true
-          cache-dependency-glob: "pyproject.toml"
+          cache-dependency-glob: "${{ inputs.working_directory }}/pyproject.toml"
           version: "0.6.5"
           python-version: ${{ matrix.version == 'default' && '' || matrix.version }}
 
@@ -148,10 +158,11 @@ jobs:
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         id: setup-py
         with:
-          python-version-file: "pyproject.toml"
+          python-version-file: "${{ inputs.working_directory }}/pyproject.toml"
 
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
+        working-directory: ${{ inputs.working_directory }}
         env:
           PYTHON_VERSION: ${{ matrix.version == 'default' && steps.setup-py.outputs.python-version || matrix.version }}
         run: >
@@ -160,15 +171,18 @@ jobs:
           ${{ inputs.tests_conda_deps }}
 
       - name: Install editable package and required dependencies
+        working-directory: ${{ inputs.working_directory }}
         run: uv sync --inexact
 
       # Run unittests
       # * Produce JUnit XML report
       # * TODO: Work out how to pass environment variables to test
       - name: Run unit tests (with pytest)
+        working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner != 'unittest' }}
         run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
       - name: Run unit tests (with unittest)
+        working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner == 'unittest' }}
         run: uv run python -m xmlrunner discover -s ${{ inputs.tests_folder }} -p "test_*.py" --output-file ut-report.xml
 
