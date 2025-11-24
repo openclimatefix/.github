@@ -105,7 +105,7 @@ jobs:
         if: ${{ inputs.enable_linting }}
         working-directory: ${{ inputs.working_directory }}
         run: |
-          uv run ruff check --output-format=github .
+          uv run --with ruff ruff check --output-format=github .
 
       - name: Typecheck package
         if: ${{ inputs.enable_typechecking }}
