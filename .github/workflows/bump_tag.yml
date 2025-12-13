@@ -37,11 +37,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.OCF_BOT_PAT_TOKEN }}
 
-      # NEW STEP: Determine bump type based on branch name
+      # Step: Determine bump type based on branch name
       - name: Determine version bump type
         id: bump-type
         run: |
-          # Detect the source branch correctly
+          # Detect the source branch
           if [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.event.pull_request.merged }}" == "true" ]; then
             BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
           else
@@ -50,7 +50,7 @@ jobs:
 
           echo "Branch name: $BRANCH_NAME"
 
-          # Check if branch name contains "release" (case-insensitive)
+          # If branch contains 'release', set minor bump; otherwise patch
           if echo "$BRANCH_NAME" | grep -iq "release"; then
             echo "Branch contains 'release' - setting default bump to minor"
             echo "default_bump=minor" >> $GITHUB_OUTPUT
@@ -66,5 +66,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
           RELEASE_BRANCHES: main
           WITH_V: true
-          DEFAULT_BUMP: ${{ steps.bump-type.outputs.default_bump }}  # CHANGED: Use dynamic default
+          DEFAULT_BUMP: ${{ steps.bump-type.outputs.default_bump }}  # Use dynamic bump from previous step
           GIT_API_TAGGING: false
