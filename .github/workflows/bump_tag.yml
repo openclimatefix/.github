@@ -57,6 +57,7 @@ jobs:
           else
             echo "Regular branch - keeping default bump as patch"
             echo "default_bump=patch" >> $GITHUB_OUTPUT
+          fi
 
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@a2c70ae13a881faf2b4953baaa9e49731997ab36 # v1.67.0
