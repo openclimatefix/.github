@@ -6,7 +6,7 @@ on:
       - created
 
 jobs:
-  maybe-add-comment:
+  comment-nocontribution:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.issue.labels.*.name, 'contributions-welcome') && 
         !contains(github.event.issue.labels.*.name, 'good first issue') && 
