@@ -13,15 +13,24 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Check user not in core team
-        uses: tspascoal/get-user-teams-membership@v2
-        id: teamAffiliation
-        with:
+      - name: Check if user is in team
+        id: check_team
+        env:
           GITHUB_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
-          username: ${{ github.event.comment.user.login }}
-          team: ocf-core
+          USER: ${{ github.event.comment.user.login }}
+        run: |
+          is_member=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            /orgs/openclimatefix/teams/ocf-core/members \
+            --jq ".[] | select(.login == \"${USER}\") | .login")
+          
+          if [[ -n "$is_member" ]]; then
+            echo "is_member=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_member=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Add comment
-        if: ${{ steps.teamAffiliation.outputs.isTeamMember == 'false' }}
+        if: ${{ steps.check_team.outputs.is_member == 'false' }}
         run: |
           gh issue comment "$NUMBER" --body  "@${{ github.event.comment.user.login }} $BODY"
         env:
