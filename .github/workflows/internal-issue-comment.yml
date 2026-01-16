@@ -1,14 +1,13 @@
 name: Reply to internal issue comment
 run-name: Reply to internal issue comment by ${{ github.actor }}
 on:
-  issue_comment:
-    types:
-      - created
+  workflow_call:
 
 jobs:
   comment-nocontribution:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.issue.labels.*.name, 'contributions-welcome') && 
+    if: ${{ contains(github.event_name, 'issue_comment') &&
+        !contains(github.event.issue.labels.*.name, 'contributions-welcome') && 
         !contains(github.event.issue.labels.*.name, 'good first issue') && 
         !github.event.issue.pull_request }}
     permissions:
