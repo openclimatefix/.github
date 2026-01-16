@@ -16,7 +16,7 @@ jobs:
       - name: Check if user is in team
         id: check_team
         env:
-          GITHUB_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
           USER: ${{ github.event.comment.user.login }}
         run: |
           is_member=$(gh api \
@@ -34,7 +34,7 @@ jobs:
         run: |
           gh issue comment "$NUMBER" --body  "@${{ github.event.comment.user.login }} $BODY"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           BODY: >
