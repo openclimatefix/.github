@@ -31,7 +31,7 @@ The purpose of this section is to provide guidance for both internal and open-so
 - Developers must understand every line of code they submit for a pull request. Additional comments can be added where necessary to ensure clarity. 
 - Keep code as minimal and concise as possible, larger codebases are harder to maintain.
 - Comments and pull-request descriptions should be written primarily by the developer. AI tools may be used to refine or improve them.
-- OCF reserves the right to close your pull request, for example if the pull request does not follow the guidelines above, if pull request doesn't solve the issue e.t.c
+- OCF reserves the right to close a pull request, for example if the pull request does not follow the guidelines above, if pull request doesn't solve the issue e.t.c
 
 ### Other ways to get involved
 * Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Bluesky](https://bsky.app/profile/openclimatefix.org) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work;
