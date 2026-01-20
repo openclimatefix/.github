@@ -23,6 +23,16 @@ Here's how you can get involved:
 * First time contributing? Here's a [quick guide from firstcontributions](https://github.com/firstcontributions/first-contributions) to help you get started!
 * Join our [GitHub Discussions](https://github.com/orgs/openclimatefix/discussions) to ask questions, share ideas, or engage with the community.
 
+### AI Policy
+
+The purpose of this section is to provide guidance for both internal and open-source developers on the appropriate use of AI tools during code development and in pull requests. AI tools for developers are changing rapidly, but here are some general principles:
+- AI tools should support developers, not replace them.
+- You may use any AI tooling you find helpful, from LLM-based code generation to simple spell-checkers.
+- Developers must understand every line of code they submit for a pull request. Additional comments can be added where necessary to ensure clarity. 
+- Keep code as minimal and concise as possible, larger codebases are harder to maintain.
+- Comments and pull-request descriptions should be written primarily by the developer. AI tools may be used to refine or improve them.
+- OCF reserves the right to close a pull request, for example if the pull request does not follow the guidelines above, if pull request doesn't solve the issue e.t.c
+
 ### Other ways to get involved
 * Sign up to our [newsletter](https://ocfnews.substack.com/?utm_source=substack&utm_medium=web&utm_campaign=substack_profile) and follow us on [Bluesky](https://bsky.app/profile/openclimatefix.org) and [LinkedIn](https://www.linkedin.com/company/19123036/admin/) to learn the latest about our work;
 * Use our datasets on [Hugging Face](https://huggingface.co/openclimatefix) or [EUMETSAT satellite data](https://console.cloud.google.com/marketplace/product/bigquery-public-data/eumetsat-seviri-rss?hl=en-GB&project=solar-pv-nowcasting) and let us know if it was useful;
