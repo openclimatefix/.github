@@ -35,7 +35,6 @@ jobs:
           gh issue comment "$NUMBER" --body  "@${{ github.event.comment.user.login }} $BODY"
         env:
           GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
-          GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           BODY: >
             Thank you for reaching out! Unfortunately, this issue is not suitable for open source 
