@@ -1,0 +1,43 @@
+name: Reply to internal issue comment
+run-name: Reply to internal issue comment by ${{ github.actor }}
+on:
+  workflow_call:
+
+jobs:
+  comment-nocontribution:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event_name, 'issue_comment') &&
+        !contains(github.event.issue.labels.*.name, 'contributions-welcome') && 
+        !contains(github.event.issue.labels.*.name, 'good first issue') && 
+        !github.event.issue.pull_request }}
+    permissions:
+      issues: write
+    steps:
+      - name: Check if user is in team
+        id: check_team
+        env:
+          GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
+          USER: ${{ github.event.comment.user.login }}
+        run: |
+          is_member=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            /orgs/openclimatefix/teams/ocf-core/members \
+            --jq ".[] | select(.login == \"${USER}\") | .login")
+          
+          if [[ -n "$is_member" ]]; then
+            echo "is_member=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_member=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Add comment
+        if: ${{ steps.check_team.outputs.is_member == 'false' }}
+        run: |
+          gh issue comment "$NUMBER" --body  "@${{ github.event.comment.user.login }} $BODY"
+        env:
+          GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            Thank you for reaching out! Unfortunately, this issue is not suitable for open source 
+            contribution and so hasn't been marked with "good first issue" or "contributions welcome".
+            Please consult our [contribution guidelines](https://github.com/openclimatefix#how-to-get-involved) for more information on how you can contribute, 
+            and hope to see you around!
