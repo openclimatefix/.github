@@ -32,7 +32,7 @@ jobs:
       - name: Add comment
         if: ${{ steps.check_team.outputs.is_member == 'false' }}
         run: |
-          gh issue comment "$NUMBER" --body  "@${{ github.event.comment.user.login }} --repo "${{ github.repository }} $BODY"
+          gh issue comment "$NUMBER" --repo ${{ github.repository }} --body "@${{ github.event.comment.user.login }} $BODY"
         env:
           GH_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
           NUMBER: ${{ github.event.issue.number }}
