@@ -180,7 +180,7 @@ jobs:
       - name: Run unit tests (with pytest)
         working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner != 'unittest' }}
-        run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
+        run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }} --log-level=debug -s
       - name: Run unit tests (with unittest)
         working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner == 'unittest' }}
