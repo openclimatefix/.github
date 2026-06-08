@@ -15,10 +15,6 @@ Please also list any relevant details for your test configuration_
 
 - [ ] Yes
 
-_If your changes affect data processing, have you plotted any changes? i.e. have you done a quick sanity check?_
-
-- [ ] Yes
-
 ## Checklist:
 
 - [ ] My code follows [OCF's coding style guidelines](https://github.com/openclimatefix/.github/blob/main/coding_style.md)
