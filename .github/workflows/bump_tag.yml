@@ -1,5 +1,6 @@
 # Workflow to bump and push the Git tag for a repo
 # * Use #major/#minor in commit message to bump beyond patch
+# * Branches containing "release" automatically trigger minor bump
 
 name: Bump Tag
 
@@ -36,6 +37,30 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.OCF_BOT_PAT_TOKEN }}
 
+      - name: Determine version bump type based on branch name
+        id: bump-type
+        run: |
+          # Detect the source branch correctly
+          EVENT_NAME="${{ github.event_name }}"
+          IS_MERGED="${{ github.event.pull_request.merged }}"
+          
+          if [[ "$EVENT_NAME" == "pull_request" && "$IS_MERGED" == "true" ]]; then
+            BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+          
+          echo "Branch name: $BRANCH_NAME"
+          
+          # Check if branch name contains "release" (case-insensitive)
+          if echo "$BRANCH_NAME" | grep -iq "release"; then
+            echo "Branch contains 'release' - setting default bump to minor"
+            echo "default_bump=minor" >> $GITHUB_OUTPUT
+          else
+            echo "Regular branch - keeping default bump as patch"
+            echo "default_bump=patch" >> $GITHUB_OUTPUT
+          fi
+
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@a2c70ae13a881faf2b4953baaa9e49731997ab36 # v1.67.0
         id: tag
@@ -43,5 +68,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.OCF_BOT_PAT_TOKEN }}
           RELEASE_BRANCHES: main
           WITH_V: true
-          DEFAULT_BUMP: patch
+          DEFAULT_BUMP: ${{ steps.bump-type.outputs.default_bump }}
           GIT_API_TAGGING: false
