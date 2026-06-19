@@ -2,6 +2,14 @@ name: Python Tests
 on:
   workflow_call:
     inputs:
+      # Optional Hugging Face token.
+      # Callers can pass this as: secrets.HF_TOKEN
+      hf_token:
+        description: 'Optional Hugging Face token for tests'
+        required: false
+        type: string
+        default: ''
+
       pytest_cov_dir:
         required: false
         type: string
@@ -116,12 +124,15 @@ jobs:
           echo "pytest-cov options that will be used are: $PYTESTCOV"
           echo "PYTESTCOV=$PYTESTCOV" >> $GITHUB_ENV
       - name: Run pytest
+        env:
+          HF_TOKEN: ${{ inputs.hf_token }}
         run: |
           export PYTHONPATH=${PYTHONPATH}:${{ inputs.python_path }}
           export PYTEST_COMMAND="pytest $PYTESTCOV $PYTESTXDIST -s"
           echo "Will be running this command: $PYTEST_COMMAND"
           if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
           eval $PYTEST_COMMAND
+
       - name: Show coverage
         run: |
           if [ ${{ inputs.test_dir }} != '' ]; then cd ${{ inputs.test_dir }}; fi
