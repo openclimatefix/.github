@@ -190,10 +190,14 @@ jobs:
       - name: Run unit tests (with pytest)
         working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner != 'unittest' }}
+        env:
+           HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
         run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
       - name: Run unit tests (with unittest)
         working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner == 'unittest' }}
+        env:
+           HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
         run: uv run python -m xmlrunner discover -s ${{ inputs.tests_folder }} -p "test_*.py" --output-file ut-report.xml
 
       # Create test summary to be visualised on the job summary screen on GitHub
