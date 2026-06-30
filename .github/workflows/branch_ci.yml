@@ -16,9 +16,14 @@ on:
         type: string
       enable_linting:
         description: >
-          Whether to run linting against the repository
-          (requires ruff in the `dev` dependency group)
+          Whether to run the ruff linter against the repository
         default: true
+        required: false
+        type: boolean
+      enable_formatting:
+        description: >
+          Whether to run the ruff formatter against the repository
+        default: false
         required: false
         type: boolean
       enable_typechecking:
@@ -112,6 +117,11 @@ jobs:
         working-directory: ${{ inputs.working_directory }}
         run: uv run mypy .
         # TODO: GitHub output when https://github.com/python/mypy/pull/17771 merged
+
+      - name: Format package
+        if: ${{ inputs.enable_formatting }}
+        working-directory: ${{ inputs.working_directory }}
+        run: uv run ruff format --check ${{ inputs.working_directory }}
 
   create-test-matrix:
     runs-on: ubuntu-latest
