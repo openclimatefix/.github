@@ -29,7 +29,6 @@ on:
       enable_typechecking:
         description: >
           Whether to typecheck the repository
-          (requires mypy in the `dev` dependency group)
         default: true
         required: false
         type: boolean
@@ -75,10 +74,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# Registry for storing Container images
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  UV_VERSION: "0.11.29"
+  UV_LOCKED: 1
 
 jobs:
   # Job to run a linter and typechecker against the codebase
@@ -92,14 +92,9 @@ jobs:
       - name: Setup uv
         uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb # v6.1.0
         with:
-          version: "0.6.5"
+          version: ${{ env.UV_VERSION }}
           enable-cache: true
           prune-cache: false
-
-      - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
-        with:
-          python-version-file: "${{ inputs.working_directory }}/pyproject.toml"
 
       - name: Install editable package and required dependencies
         if: ${{ inputs.enable_linting || inputs.enable_typechecking }}
@@ -110,18 +105,17 @@ jobs:
         if: ${{ inputs.enable_linting }}
         working-directory: ${{ inputs.working_directory }}
         run: |
-          uv run --with ruff ruff check --output-format=github .
+          uvx ruff check --output-format=github .
 
       - name: Typecheck package
         if: ${{ inputs.enable_typechecking }}
         working-directory: ${{ inputs.working_directory }}
-        run: uv run mypy .
-        # TODO: GitHub output when https://github.com/python/mypy/pull/17771 merged
+        run: uvx ty check --output-format=github .
 
       - name: Format package
         if: ${{ inputs.enable_formatting }}
         working-directory: ${{ inputs.working_directory }}
-        run: uv run ruff format --check ${{ inputs.working_directory }}
+        run: uvx ruff format --check .
 
   create-test-matrix:
     runs-on: ubuntu-latest
@@ -156,25 +150,19 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup uv
+        id: setup-uv
         uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb # v6.1.0
         with:
           enable-cache: true
           cache-dependency-glob: "${{ inputs.working_directory }}/pyproject.toml"
-          version: "0.6.5"
+          version: ${{ env.UV_VERSION }}
           python-version: ${{ matrix.version == 'default' && '' || matrix.version }}
-
-      - name: Set up Python
-        if: ${{ matrix.version == 'default' }}
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
-        id: setup-py
-        with:
-          python-version-file: "${{ inputs.working_directory }}/pyproject.toml"
 
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
         working-directory: ${{ inputs.working_directory }}
         env:
-          PYTHON_VERSION: ${{ matrix.version == 'default' && steps.setup-py.outputs.python-version || matrix.version }}
+          PYTHON_VERSION: ${{ matrix.version == 'default' && steps.setup-uv.outputs.python-version || matrix.version }}
         run: >
           conda create --quiet --yes -p .venv 
           python=${PYTHON_VERSION%.*}
