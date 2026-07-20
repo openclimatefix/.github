@@ -140,7 +140,7 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "${{ inputs.working_directory }}/pyproject.toml"
           version: ${{ env.UV_VERSION }}
-          python-version: ${{ matrix.version == 'default' && '' || matrix.version }}
+          python-version: ${{ matrix.version != 'default' && matrix.version || '' }}
 
       - name: Resolve Python version for Conda
         id: resolve-python
@@ -155,7 +155,7 @@ jobs:
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
         working-directory: ${{ inputs.working_directory }}
         env:
-          PYTHON_VERSION: ${{ matrix.version == 'default' && steps.resolve-python.outputs.version || matrix.version }}
+          PYTHON_VERSION: ${{ matrix.version != 'default' && matrix.version || steps.resolve-python.outputs.version }}
         run: >
           conda create --quiet --yes -p .venv 
           python=${PYTHON_VERSION%.*}
