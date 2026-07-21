@@ -142,20 +142,11 @@ jobs:
           version: ${{ env.UV_VERSION }}
           python-version: ${{ matrix.version != 'default' && matrix.version || '' }}
 
-      - name: Resolve Python version for Conda
-        id: resolve-python
-        if: ${{ inputs.tests_conda_deps && matrix.version == 'default' }}
-        working-directory: ${{ inputs.working_directory }}
-        run: |
-          uv python install
-          VERSION=$(uv run python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Install conda requirements
         if: ${{ inputs.tests_conda_deps }} # An empty string evaluates to false
         working-directory: ${{ inputs.working_directory }}
         env:
-          PYTHON_VERSION: ${{ matrix.version != 'default' && matrix.version || steps.resolve-python.outputs.version }}
+          PYTHON_VERSION: ${{ matrix.version != 'default' && matrix.version || steps.setup-uv.outputs.python_version }}
         run: >
           conda create --quiet --yes -p .venv 
           python=${PYTHON_VERSION%.*}
