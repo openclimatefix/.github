@@ -162,6 +162,9 @@ jobs:
           conda create --quiet --yes -p .conda-env python=${PYTHON_VERSION%.*} ${{ inputs.tests_conda_deps }}
           rm -rf .venv
           uv venv --python .conda-env/bin/python --system-site-packages .venv
+          # Export Conda prefix so packages like esmpy can find their C-libraries
+          echo "CONDA_PREFIX=$PWD/.conda-env" >> $GITHUB_ENV
+          echo "ESMFMKFILE=$PWD/.conda-env/lib/esmf.mk" >> $GITHUB_ENV
 
       - name: Install editable package and required dependencies
         working-directory: ${{ inputs.working_directory }}
