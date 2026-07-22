@@ -67,8 +67,8 @@ on:
         type: string
       image_base_name:
         description: >
-          Base name for the Docker image.
-        default:  ${{ github.repository_owner }} / ${{ github.repository }}
+          Base name for the Docker image. It should start with 'openclimatefix/{name}'
+        default: ${{ github.repository }}
         required: false
         type: string
         
