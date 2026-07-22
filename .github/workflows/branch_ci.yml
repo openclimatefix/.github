@@ -68,7 +68,7 @@ on:
       image_base_name:
         description: >
           Base name for the Docker image.
-        default:  ${{ github.repository }}
+        default:  ${{ github.repository_owner }} / ${{ github.repository }}
         required: false
         type: string
         
