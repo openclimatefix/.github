@@ -21,6 +21,12 @@ on:
         default: false
         required: false
         type: boolean
+      image_base_name:
+        description: >
+          Base name for the Docker image. It should start with 'openclimatefix/{name}'
+        default:  ${{ github.repository }}
+        required: false
+        type: string
 
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
@@ -30,7 +36,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ inputs.image_base_name }}
 
 
 jobs:
