@@ -165,7 +165,7 @@ jobs:
         env:
           PYTHON_VERSION: ${{ matrix.version != 'default' && matrix.version || steps.resolve-python.outputs.version }}
         run: |
-          conda create --quiet --yes -p .conda-env python=${PYTHON_VERSION%.*} ${{ inputs.tests_conda_deps }}
+          conda create --quiet --yes -p .conda-env python=${PYTHON_VERSION} ${{ inputs.tests_conda_deps }}
           rm -rf .venv
           uv venv --python .conda-env/bin/python --system-site-packages .venv
           # Export Conda prefix so packages like esmpy can find their C-libraries
