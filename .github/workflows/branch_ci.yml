@@ -71,6 +71,14 @@ on:
         default: ${{ github.repository }}
         required: false
         type: string
+      uv_package:
+        description: >
+          For uv workspaces, the workspace member to sync and test, so that only its own
+          dependencies and dependency groups are installed in the test environment.
+          Defaults to the project in the working directory.
+        default: ''
+        required: false
+        type: string
         
 # Specify concurrency such that only one workflow can run at a time
 # * Different workflow files are not affected
@@ -132,6 +140,9 @@ jobs:
     strategy:
       matrix:
         version: ${{ fromJSON(inputs.test_python_versions) }}
+    env:
+      # Restrict uv to one workspace member when requested, else sync the whole project
+      UV_PACKAGE_ARG: ${{ inputs.uv_package && format('--package {0}', inputs.uv_package) || '' }}
 
     steps:
       - name: Checkout repository
@@ -174,7 +185,7 @@ jobs:
 
       - name: Install editable package and required dependencies
         working-directory: ${{ inputs.working_directory }}
-        run: uv sync --inexact
+        run: uv sync --inexact ${{ env.UV_PACKAGE_ARG }}
 
       # Run unittests
       # * Produce JUnit XML report
@@ -184,7 +195,7 @@ jobs:
         if: ${{ inputs.tests_runner != 'unittest' }}
         env:
            HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
-        run: uv run python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
+        run: uv run ${{ env.UV_PACKAGE_ARG }} python -m pytest --junitxml=ut-report.xml ${{ inputs.tests_folder }}
       - name: Run unit tests (with unittest)
         working-directory: ${{ inputs.working_directory }}
         if: ${{ inputs.tests_runner == 'unittest' }}
